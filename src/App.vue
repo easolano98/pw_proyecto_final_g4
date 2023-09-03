@@ -1,17 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <img alt="Vue logo" src="./assets/logo.png" />
+  <PublicarNoticia />
+  <br>
+  <PublicarForo />
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import PublicarForo from './modules/foros/components/PublicarForo.vue';
+import PublicarNoticia from "./modules/noticias/components/PublicarNoticia.vue";
 
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    PublicarNoticia,
+    PublicarForo
+    
+  },
+};
 </script>
 
 <style>
