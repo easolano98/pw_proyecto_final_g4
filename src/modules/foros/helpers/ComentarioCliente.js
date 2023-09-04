@@ -32,7 +32,7 @@ const actualizarComentario = async (bodyComentario, id) => {
 
 
 const consultarComentarios=async()=>{
-    const data= axios.get(`http://localhost:8080/API/v1.0/Facultad/comentarios/`).then(r=>r.data)
+    const data= axios.get(`http://localhost:8080/API/v1.0/Facultad/comentarios`).then(r=>r.data)
     console.log(data)  
     return data
 }

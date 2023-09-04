@@ -1,24 +1,40 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <PublicarNoticia />
-  <br>
-  <PublicarForo />
-  <br>
-  <RegistroPage/>
+  <MostrarUnaNoticiaPage />
+  <br />
+  <PublicarNoticiaPage />
+  <br />
+  <ForoPageVue />
+  <br />
+  <PublicarForoPage />
+  <br />
+  <RegistroPage />
+  <br />
+  <BuscarNoticiasEstudiantePageVue />
 </template>
 
 <script>
-import RegistroPage from './modules/estudiantes/pages/RegistroPage.vue';
-import PublicarForo from './modules/foros/components/PublicarForo.vue';
-import PublicarNoticia from "./modules/noticias/components/PublicarNoticia.vue";
+import BuscarNoticiasEstudiantePageVue from "./modules/estudiantes/pages/BuscarNoticiasEstudiantePage.vue";
+import RegistroPage from "./modules/estudiantes/pages/RegistroPage.vue";
+import ForoPageVue from "./modules/foros/pages/ForoPage.vue";
+import MostrarComentariosPage from "./modules/foros/pages/MostrarComentariosPage.vue";
+import PageComentario from "./modules/foros/pages/PageComentario.vue";
+import PublicarForoPage from "./modules/foros/pages/PublicarForoPage.vue";
+import MostrarNoticiasPage from "./modules/noticias/page/MostrarNoticiasPage.vue";
+import MostrarUnaNoticiaPage from "./modules/noticias/page/MostrarUnaNoticiaPage.vue";
+import PublicarNoticiaPage from "./modules/noticias/page/PublicarNoticiaPage.vue";
 
 export default {
   name: "App",
   components: {
-    PublicarNoticia,
-    PublicarForo,
-    RegistroPage
-    
+    PublicarForoPage,
+    PublicarNoticiaPage,
+    RegistroPage,
+    MostrarComentariosPage,
+    PageComentario,
+    MostrarNoticiasPage,
+    BuscarNoticiasEstudiantePageVue,
+    ForoPageVue,
+    MostrarUnaNoticiaPage,
   },
 };
 </script>

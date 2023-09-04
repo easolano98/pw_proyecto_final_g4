@@ -15,7 +15,10 @@
 </template>
 
 <script>
-import { guardarForoFachada } from "../helpers/ForoCliente";
+import {
+  guardarForoFachada,
+  consultarForoFachada,
+} from "../helpers/ForoCliente";
 export default {
   data() {
     return {
@@ -25,13 +28,20 @@ export default {
     };
   },
   methods: {
-    insertarForo() {
+    async insertarForo() {
       const data = {
         asunto: this.asunto,
         descripcion: this.descripcion,
         cedulaEstudiante: this.cedula,
       };
-      guardarForoFachada(data);
+      try {
+        await consultarForoFachada(this.asunto);
+        alert(
+          "No se pudo publicar el foro debido a que existe un foro con ese asunto. \nUtilice otro asunto"
+        );
+      } catch {
+        guardarForoFachada(data);
+      }
     },
   },
 };

@@ -11,9 +11,8 @@
 </template>
 
 <script>
-import BuscarNoticias from "../components/BuscarNoticias.vue";
-import { consultarNoticiasFachada } from "../helpers/NoticiaCliente";
-
+import BuscarNoticias from "@/modules/noticias/components/BuscarNoticias.vue";
+import { consultarNoticiasEstudianteFachada } from "../helpers/EstudianteCliente";
 export default {
   components: {
     BuscarNoticias,
@@ -24,12 +23,10 @@ export default {
     };
   },
   methods: {
-    async consumirAPI() {
+    async consultarNoticias() {
       try {
-        // Llama a tu funciÃ³n de fachada para obtener los datos de noticias
-        const noticias = await consultarNoticiasFachada();
+        const noticias = await consultarNoticiasEstudianteFachada(this.cedula);
 
-        // Actualiza el estado de Vue con los datos de noticias
         this.noticias = noticias;
       } catch (error) {
         console.error("Error al cargar las noticias:", error);
@@ -37,7 +34,13 @@ export default {
     },
   },
   mounted() {
-    this.consumirAPI();
+    this.consultarNoticias();
+  },
+  props: {
+    cedula: {
+      type: String,
+      required: true,
+    },
   },
 };
 </script>

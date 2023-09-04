@@ -4,25 +4,18 @@
       <h1>Noticia</h1>
     </div>
 
-    <label for="">Titulo Corto</label>
-    <div>
-      <input v-model="tituloCorto" type="text" />
-    </div>
-
-    <button @click="buscarNoticia">Buscar</button>
-
-    <div v-if="mostrar" class="contenedor-noticia-info">
+    <div class="contenedor-noticia-info">
       <h1>{{ tituloCorto }}</h1>
       <h2>{{ tituloLargo }}</h2>
       <p>Fecha: {{ fecha }}</p>
       <p>Autor: {{ cedula }}</p>
 
-      <label v-if="mostrar" for="imagen">Imagen</label>
+      <label for="imagen">Imagen</label>
       <div>
         <img v-if="urlImagen" :src="urlImagen" alt="Imagen cargada" />
       </div>
 
-      <label v-if="mostrar" for="imagen">Video</label>
+      <label for="imagen">Video</label>
       <div v-if="urlVideo" class="video-container">
         <iframe :src="embedURL" frameborder="0" allowfullscreen></iframe>
       </div>
@@ -37,14 +30,12 @@ export default {
   data() {
     return {
       id: null,
-      tituloCorto: null,
       tituloLargo: null,
       descripcion: null,
       fecha: null,
       cedula: null,
       urlImagen: null,
       urlVideo: null,
-      mostrar: false,
     };
   },
 
@@ -63,28 +54,23 @@ export default {
 
   methods: {
     async buscarNoticia() {
-      if (this.tituloCorto != null && this.tituloCorto != "") {
-        const dato = await consultarNoticiaFachada(this.tituloCorto);
+      const dato = await consultarNoticiaFachada(this.tituloCorto);
 
-        this.tituloLargo = dato.tituloLargo;
-        this.descripcion = dato.descripcion;
-        this.fecha = dato.fecha;
-        this.cedula = dato.cedulaEstudiante;
+      this.tituloLargo = dato.tituloLargo;
+      this.descripcion = dato.descripcion;
+      this.fecha = dato.fecha;
+      this.cedula = dato.cedulaEstudiante;
 
-        if (dato.urlImagen != null && dato.urlImagen != "") {
-          this.urlImagen = dato.urlImagen;
-        }
-
-        if (dato.urlVideo != null && dato.urlVideo != "") {
-          this.urlVideo = dato.urlVideo;
-        }
-
-        this.mostrar = true;
-        console.log(dato);
-      } else {
-        this.mostrar = false;
-        console.log("llene el campo titulo corto");
+      if (dato.urlImagen != null && dato.urlImagen != "") {
+        this.urlImagen = dato.urlImagen;
       }
+
+      if (dato.urlVideo != null && dato.urlVideo != "") {
+        this.urlVideo = dato.urlVideo;
+      }
+
+      this.mostrar = true;
+      console.log(dato);
     },
 
     getVideoIDFromURL(url) {
@@ -93,6 +79,15 @@ export default {
         /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?feature=player_embedded&v=|embed\/watch\?feature=player_embedded&v=))([^#\&\?]*).*/
       );
       return match && match[1];
+    },
+  },
+  mounted() {
+    this.buscarNoticia();
+  },
+  props: {
+    tituloCorto: {
+      type: String,
+      required: true,
     },
   },
 };
@@ -104,10 +99,9 @@ img {
   height: 150px;
 }
 
-.contenedor-noticia-component{
-
-    display: inline-block;
-    justify-content: center;
+.contenedor-noticia-component {
+  display: inline-block;
+  justify-content: center;
 }
 .contenedor-noticia-info {
   border: 1px solid grey;
