@@ -1,5 +1,5 @@
 <template>
-  <DatoConsultarNoticiaTituloCorto :tituloCorto="'nuevojuegoMario'" />
+  <DatoConsultarNoticiaTituloCorto :tituloCorto="'Semana Libre'" />
 </template>
 
 <script>
