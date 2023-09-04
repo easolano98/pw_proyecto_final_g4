@@ -13,6 +13,10 @@ export const actualizarComentarioFachada = async (bodyComentario, id) => {
     await actualizarComentario(bodyComentario, id)
 }
 
+export const consultarComentariosFachada=async()=>{
+    return await consultarComentarios()
+}
+
 const guardarComentario = async (bodyComentario) => {
     axios.post(`http://localhost:8080/API/v1.0/Facultad/comentarios`, bodyComentario).then(r => r.data)
 }
@@ -24,5 +28,12 @@ const consultarComentario = async (asunto) => {
 
 const actualizarComentario = async (bodyComentario, id) => {
     axios.put(`http://localhost:8080/API/v1.0/Facultad/comentarios/${id}`, bodyComentario).then(r => r.data)
+}
+
+
+const consultarComentarios=async()=>{
+    const data= axios.get(`http://localhost:8080/API/v1.0/Facultad/comentarios/`).then(r=>r.data)
+    console.log(data)  
+    return data
 }
 

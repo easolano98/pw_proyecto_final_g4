@@ -3,9 +3,12 @@
   <PublicarNoticia />
   <br>
   <PublicarForo />
+  <br>
+  <RegistroPage/>
 </template>
 
 <script>
+import RegistroPage from './modules/estudiantes/pages/RegistroPage.vue';
 import PublicarForo from './modules/foros/components/PublicarForo.vue';
 import PublicarNoticia from "./modules/noticias/components/PublicarNoticia.vue";
 
@@ -13,7 +16,8 @@ export default {
   name: "App",
   components: {
     PublicarNoticia,
-    PublicarForo
+    PublicarForo,
+    RegistroPage
     
   },
 };
