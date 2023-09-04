@@ -39,7 +39,10 @@
 </template>
 
 <script>
-import { guardarNoticiaFachada } from "../helpers/NoticiaCliente";
+import {
+  guardarNoticiaFachada,
+  consultarNoticiaFachada,
+} from "../helpers/NoticiaCliente";
 export default {
   data() {
     return {
@@ -65,7 +68,7 @@ export default {
         };
       }
     },
-    insertarNoticia() {
+    async insertarNoticia() {
       const data = {
         tituloCorto: this.tituloCorto,
         tituloLargo: this.tituloLargo,
@@ -74,7 +77,14 @@ export default {
         urlVideo: this.urlVideo,
         cedulaEstudiante: this.cedula,
       };
-      guardarNoticiaFachada(data);
+      try {
+        await consultarNoticiaFachada(this.tituloCorto);
+        alert(
+          "La noticia con esa identificador " + this.tituloCorto + " ya existe"
+        );
+      } catch {
+        await guardarNoticiaFachada(data);
+      }
     },
   },
 };
