@@ -13,6 +13,11 @@ export default {
   components: {
     DatoConsultarNoticiaTituloCorto,
   },
+  data() {
+    return {
+      tituloCorto: this.$route.params.tituloCorto,
+    };
+  },
 };
 </script>
 
