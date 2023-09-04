@@ -1,16 +1,20 @@
 <template>
-  <BuscarForosEstudiantes :cedula="'1750844787'" />
+  <BuscarForosEstudiantes :cedula="cedula" />
 </template>
 
 <script>
-import BuscarForosEstudiantes from '../components/BuscarForosEstudiantes.vue';
+import BuscarForosEstudiantes from "../components/BuscarForosEstudiantes.vue";
 export default {
-    components:{
-        BuscarForosEstudiantes
-    }
-}
+  data() {
+    return {
+      cedula: this.$route.params.cedula,
+    };
+  },
+  components: {
+    BuscarForosEstudiantes,
+  },
+};
 </script>
 
 <style>
-
 </style>

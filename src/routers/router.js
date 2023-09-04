@@ -6,7 +6,7 @@ const routes = [
         component: () => import("../modules/estudiantes/pages/BuscarForosEstudiantePage")
     },
     {
-        path: "/estudiantes/:cedula/foros",
+        path: "/estudiantes/:cedula/noticias",
         component: () => import("../modules/estudiantes/pages/BuscarNoticiasEstudiantePage")
     },
     {
@@ -19,22 +19,26 @@ const routes = [
     },
     {
         path: "/foros/:asunto",
-        component: () => import("../modules/foros/pages/ForoPage.vue"),
+        component: () => import("../modules/foros/pages/ForoPage"),
     },
     {
         path: "/foros",
-        component: () => import("../modules/foros/pages/MotrarForosPage.vue"),
+        component: () => import("../modules/foros/pages/MotrarForosPage"),
+    },
+    {
+        path: "/quejas",
+        component: () => import("../modules/foros/pages/QuejasPage"),
     },
     {
         path: "/foros/publicar",
-        component: () => import("../modules/foros/pages/PublicarForoPage.vue")
+        component: () => import("../modules/foros/pages/PublicarForoPage")
     },
     {
         path: "/noticias",
         component: () => import('../modules/noticias/page/MostrarNoticiasPage')
     },
     {
-        path: "/noticias/:cedula/estudiante",
+        path: "/noticias/:tituloCorto",
         component: () => import('../modules/noticias/page/MostrarUnaNoticiaPage')
     },
     {

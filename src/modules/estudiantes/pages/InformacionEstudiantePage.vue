@@ -1,20 +1,20 @@
 <template>
-
-    
-  <InformacionEstudiante/>
-  
+  <InformacionEstudiante :cedula="cedula" />
 </template>
 
 <script>
-import InformacionEstudiante from '../components/InformacionEstudiante.vue'
+import InformacionEstudiante from "../components/InformacionEstudiante.vue";
 export default {
-
-    components:{
-        InformacionEstudiante
-    },
-}
+  data() {
+    return {
+      cedula: this.$route.params.cedula,
+    };
+  },
+  components: {
+    InformacionEstudiante,
+  },
+};
 </script>
 
 <style>
-
 </style>

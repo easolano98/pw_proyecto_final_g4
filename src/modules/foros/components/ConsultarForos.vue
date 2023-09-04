@@ -4,42 +4,53 @@
       <th>Asunto</th>
       <th>Descripcion</th>
       <th>Fecha</th>
-        
     </tr>
 
-    <tr v-for="foro in foros" :key="foro.id" >
-      <td><button>{{ foro.asunto }}</button></td>
-      <td><button>{{ foro.descripcion }}</button></td>
-      <td><input type="datetime-local" v-model="foro.fecha" disabled></td>
+    <tr v-for="foro in foros" :key="foro.id">
+      <td>
+        <button @click="redirigirAVerForo(foro.asunto)">
+          {{ foro.asunto }}
+        </button>
+      </td>
+      <td>
+        <button @click="redirigirAVerForo(foro.asunto)">
+          {{ foro.descripcion }}
+        </button>
+      </td>
+      <td><input type="datetime-local" v-model="foro.fecha" disabled /></td>
     </tr>
     <tbody></tbody>
-</table>
+  </table>
 </template>
 
 <script>
-
-import {consultarForosFachada} from "../helpers/ForoCliente"
+import { consultarForosFachada } from "../helpers/ForoCliente";
+import router from "@/routers/router";
 
 export default {
-    data(){
-        return{
-           foros:[] 
-        }
+  data() {
+    return {
+      foros: [],
+    };
+  },
+  methods: {
+    async buscarForos() {
+      var foros = await consultarForosFachada();
+      this.foros = foros;
     },
-    methods:{
-        async buscarForos(){
-            var foros = await consultarForosFachada();
-            this.foros= foros;
-        }
+    async redirigirAVerForo(asunto) {
+      const ruta = `/foros/${asunto}`;
+      await router.push({ path: ruta });
     },
-    mounted(){
-        this.buscarForos();
-    }
-}
+  },
+  mounted() {
+    this.buscarForos();
+  },
+};
 </script>
 
 <style>
-button{
-    border: none;
+button {
+  border: none;
 }
 </style>

@@ -1,9 +1,9 @@
 <template>
   <div class="contenedor">
     <div class="registro">
-      <h1>SUSCRIBETE</h1>
-      <label for="">Cedula</label>
-      <input v-model="cedula" type="text" />
+      <h1>SUSCRÍBETE</h1>
+      <label for="">Cédula</label>
+      <input v-model="cedula" type="text" maxlength="10" />
       <label for="">Nombre</label>
       <input v-model="nombre" type="text" />
       <label for="">Apellido</label>
@@ -23,27 +23,43 @@ import {
 export default {
   data() {
     return {
-      cedula: null,
-      nombre: null,
-      apellido: null,
-      fechaNacimiento: null,
+      cedula: "",
+      nombre: "",
+      apellido: "",
+      fechaNacimiento: "",
     };
   },
   methods: {
     async guardarEstudiante() {
-      const data = {
-        cedula: this.cedula,
-        nombre: this.nombre,
-        apellido: this.apellido,
-        fechaNacimiento: this.fechaNacimiento,
-      };
+      if (this.verificarCampos()) {
+        const data = {
+          cedula: this.cedula,
+          nombre: this.nombre,
+          apellido: this.apellido,
+          fechaNacimiento: this.fechaNacimiento,
+        };
 
-      try {
-        await consultarEstudianteFachada(this.cedula);
-        alert("Ya existe el estudiante con la cedula " + this.cedula);
-      } catch {
-        await guardarEstudianteFachada(data);
-        this.reiniciar();
+        try {
+          await consultarEstudianteFachada(this.cedula);
+          alert("Ya existe el estudiante con la cedula " + this.cedula);
+        } catch {
+          await guardarEstudianteFachada(data);
+          this.reiniciar();
+        }
+      } else {
+        alert("Asegúrese de llenar todos los campos");
+      }
+    },
+    verificarCampos() {
+      if (
+        this.cedula.trim() != "" &&
+        this.nombre.trim() != "" &&
+        this.apellido.trim() != "" &&
+        this.fechaNacimiento != ""
+      ) {
+        return true;
+      } else {
+        return false;
       }
     },
     reiniciar() {

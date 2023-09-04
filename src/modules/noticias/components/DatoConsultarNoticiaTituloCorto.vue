@@ -10,15 +10,17 @@
       <p>Fecha: {{ fecha }}</p>
       <p>Autor: {{ cedula }}</p>
 
-      <label for="imagen">Imagen</label>
-      <div>
-        <img v-if="urlImagen" :src="urlImagen" alt="Imagen cargada" />
+      <div v-if="urlImagen">
+        <label for="imagen">Imagen</label>
+        <img :src="urlImagen" alt="Imagen cargada" />
       </div>
 
-      <label for="imagen">Video</label>
       <div v-if="urlVideo" class="video-container">
+        <label for="imagen">Video</label>
         <iframe :src="embedURL" frameborder="0" allowfullscreen></iframe>
       </div>
+
+      <p>{{ descripcion }}</p>
     </div>
   </div>
 </template>
@@ -70,7 +72,6 @@ export default {
       }
 
       this.mostrar = true;
-      console.log(dato);
     },
 
     getVideoIDFromURL(url) {

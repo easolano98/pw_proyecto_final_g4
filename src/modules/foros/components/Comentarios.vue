@@ -4,11 +4,11 @@
     <h3>Envia tu comentario</h3>
 
     <!-- Checkbox para mostrar/ocultar el campo de cédula -->
-    <label for="checkCedula">Marcar para ingresar la cédula:</label>
-    <input type="checkbox" id="checkCedula" v-model="mostrarCedula" />
+    <label for="checkCedula">Hacer anónimo el comentario:</label>
+    <input type="checkbox" id="checkCedula" v-model="anonimo" />
 
-    <!-- Campo de cédula, visible solo si mostrarCedula es verdadero -->
-    <div v-if="mostrarCedula">
+    <!-- Campo de cédula, visible solo si anonimo es falso -->
+    <div v-if="!anonimo">
       <label for="cedulaEstudiante">Cédula:</label>
       <input
         type="text"
@@ -18,7 +18,7 @@
       />
     </div>
 
-    <!-- Sección de anonimato, visible si mostrarCedula es falso -->
+    <!-- Sección de anonimato, visible si anonimo es verdadero -->
     <div v-else>
       <p>Anónimo</p>
     </div>
@@ -36,22 +36,42 @@ import { guardarComentarioFachada } from "../helpers/ComentarioCliente";
 export default {
   data() {
     return {
-      descripcion: null, // Datos del formulario
-      cedulaEstudiante: null,
-      mostrarCedula: false, // Controla la visibilidad del campo de cédula
+      descripcion: "", // Datos del formulario
+      cedulaEstudiante: "",
+      anonimo: "",
     };
   },
   methods: {
     guardarComentario() {
-      // Recolecta los datos del formulario
-      const data = {
-        descripcion: this.descripcion,
-        cedulaEstudiante: this.cedulaEstudiante,
-        asuntoForo: this.asuntoForo,
-      };
+      if (this.verificarCampos()) {
+        const data = {
+          descripcion: this.descripcion,
+          cedulaEstudiante: this.cedulaEstudiante,
+          asuntoForo: this.asuntoForo,
+        };
+        console.log(this.cedulaEstudiante);
+        guardarComentarioFachada(data);
 
-      // Llama a la función ficticia para guardar los datos (reemplaza esto con tu lógica real)
-      guardarComentarioFachada(data);
+        location.reload()
+      }
+    },
+    verificarCampos() {
+      if (
+        this.descripcion.trim() == "" &&
+        !this.anonimo &&
+        this.cedulaEstudiante.trim() == ""
+      ) {
+        alert("Por favor, llene todos los campos.");
+        return false;
+      } else if (this.descripcion.trim() == "") {
+        alert("Por favor, llene todos los campos.");
+        return false;
+      } else {
+        if (this.anonimo) {
+          this.cedulaEstudiante = "0000000000";
+        }
+        return true;
+      }
     },
   },
   props: {

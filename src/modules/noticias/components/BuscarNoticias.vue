@@ -11,10 +11,13 @@
       <p>{{ "Autor: " + nombreAutor }}</p>
       <p>{{ noticia.descripcion }}</p>
     </div>
+    <button @click="redirigirAVerNoticia">Ver noticia</button>
   </div>
 </template>
 
 <script>
+import router from "@/routers/router";
+
 export default {
   data() {
     return {
@@ -25,6 +28,12 @@ export default {
     noticia: Object,
   },
   methods: {
+    async redirigirAVerNoticia() {
+      console.log(this.noticia.tituloCorto);
+      const ruta = `/noticias/${this.noticia.tituloCorto}`;
+      await router.push({ path: ruta });
+    },
+
     async obtenerAutor() {
       var urlAutor = "";
       for (const link of this.noticia.links) {
