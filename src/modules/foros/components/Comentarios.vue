@@ -52,7 +52,7 @@ export default {
         console.log(this.cedulaEstudiante);
         guardarComentarioFachada(data);
 
-        location.reload()
+        location.reload();
       }
     },
     verificarCampos() {

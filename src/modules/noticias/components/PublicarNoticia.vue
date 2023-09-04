@@ -2,38 +2,55 @@
   <div class="container">
     <div class="publicar">
       <h1>Noticia</h1>
-      <label for="">Cédula</label>
-      <input type="text" v-model="cedula" />
-      <label for="">Título Corto</label>
-      <input type="text" v-model="tituloCorto" />
-      <label for="">Título Largo</label>
-      <input type="text" v-model="tituloLargo" />
 
       <div>
-        <label for="">Descripción</label>
-        <input type="checkbox" v-model="hasText" />
-        <label for="">Imagen</label>
-        <input type="checkbox" v-model="hasImage" />
-        <label for="">Video</label>
-        <input type="checkbox" v-model="hasVideo" />
+        <div class="form-floating mb-3">
+          <input type="text" maxlength="10" class="form-control" id="floatingInput" placeholder="17XXXXXXXX" v-model="cedula">
+          <label for="floatingInput">Cédula</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" placeholder="El mundo y su naturaleza" v-model="tituloCorto">
+          <label for="floatingInput">Título Corto</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input type="text" class="form-control" id="floatingInput" placeholder="El mundo y su naturaleza" v-model="tituloLargo">
+          <label for="floatingInput">Título Largo</label>
+        </div>
+      </div>
+
+      <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
+        <input type="checkbox" class="btn-check" id="btncheck1" autocomplete="off" v-model="hasText">
+        <label class="btn btn-outline-primary" for="btncheck1">Descripción</label>
+      
+        <input type="checkbox" class="btn-check" id="btncheck2" autocomplete="off" v-model="hasImage">
+        <label class="btn btn-outline-primary" for="btncheck2">Imagen</label>
+      
+        <input type="checkbox" class="btn-check" id="btncheck3" autocomplete="off" v-model="hasVideo">
+        <label class="btn btn-outline-primary" for="btncheck3">Video</label>
       </div>
 
       <div v-if="hasText">
-        <label for="">Descripcion</label>
-        <input type="text" v-model="descripcion" />
-      </div>
-      <div v-if="hasImage">
-        <label for="">Inserte una imagen</label>
-        <input type="file" @change="manejoArchivoSubido" />
-        <!-- v-model no soporta inputs de tipo 'file' -->
-        <img v-if="urlImagen != ''" :src="urlImagen" alt="" />
-      </div>
-      <div v-if="hasVideo">
-        <label for="">Agregue la URL del video (Youtube)</label>
-        <input type="url" v-model="urlVideo" />
+        <div class="form-floating mb-3">
+          <textarea type="text" class="form-control descripcion" id="floatingInput" placeholder="El mundo y su naturaleza" v-model="tituloLargo"></textarea>
+          <label for="floatingInput">Descripción</label>
+        </div>
       </div>
 
-      <button @click="insertarNoticia">Publicar Noticia</button>
+      <div v-if="hasImage">
+        <div class="input-group mb-3">
+          <input type="file" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2" @change="manejoArchivoSubido">
+        </div>
+        <img v-if="urlImagen != ''" :src="urlImagen" alt="" />
+      </div>
+
+      <div v-if="hasVideo">
+        <div class="form-floating mb-3">
+          <input type="url" class="form-control" id="floatingInput" placeholder="" v-model="urlVideo">
+          <label for="floatingInput">Inserte la URL del video</label>
+        </div>
+      </div>
+
+      <button type="button" class="btn btn-outline-secondary" @click="insertarNoticia">Publicar Noticia</button>
     </div>
   </div>
 </template>
@@ -98,5 +115,21 @@ export default {
 }
 .publicar {
   display: grid;
+}
+.descripcion {
+  width: 600px;
+  height: 250px;
+  resize: vertical;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  padding: 8px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+img {
+  max-width: 600px;
+  max-height: 400px;
 }
 </style>
