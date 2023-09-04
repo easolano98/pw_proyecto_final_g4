@@ -31,8 +31,11 @@ const guardarNoticia = async (bodyNoticia) => {
 }
 
 const consultarNoticia = async (titulo) => {
-    const data = await axios.get(`http://localhost:8080/API/v1.0/Facultad/noticias/${titulo}`).then(r => r.data)
-    return data
+    
+        const data = await axios.get(`http://localhost:8080/API/v1.0/Facultad/noticias/${titulo}`).then(r => r.data)
+        return data
+   
+   
 }
 
 const consultarNoticiaEstudiante = async (cedula) => {

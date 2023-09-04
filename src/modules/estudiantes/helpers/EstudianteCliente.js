@@ -15,8 +15,9 @@ const guardarEstudiante = async (bodyEstudiante) => {
 }
 
 const consultarEstudiante = async (cedula) => {
-
-    const data = axios.get(`http://localhost:8080/API/v1.0/Facultad/estudiantes/${cedula}`).then(r => r.data)
-    return data
-
+    
+        const data = axios.get(`http://localhost:8080/API/v1.0/Facultad/estudiantes/${cedula}`).then(r => r.data)
+        return data
+    
+    
 }

@@ -1,6 +1,6 @@
 <template>
     <div class="contenedor">
-       <div class="registro">
+        <div class="registro">
             <h1>SUSCRIBETE</h1>
             <label for="">Cedula</label>
             <input v-model="cedula" type="text" />
@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { guardarEstudianteFachada } from "../helpers/EstudianteCliente"
+import { guardarEstudianteFachada, consultarEstudianteFachada } from "../helpers/EstudianteCliente"
 export default {
 
     data() {
@@ -36,8 +36,15 @@ export default {
                 fechaNacimiento: this.fechaNacimiento
             }
 
-            await guardarEstudianteFachada(data)
-            this.reiniciar();
+            try{
+                await consultarEstudianteFachada(this.cedula)
+                alert("Ya existe el estudiante con la cedula "+this.cedula)
+            }catch{
+                await guardarEstudianteFachada(data)
+                this.reiniciar();
+            }
+
+            
         },
         reiniciar() {
             this.cedula = null;
@@ -51,9 +58,8 @@ export default {
 </script>
 
 
-
 <style scoped >
-.contenedor{
+.contenedor {
     display: flex;
     justify-content: center;
     align-items: center;
