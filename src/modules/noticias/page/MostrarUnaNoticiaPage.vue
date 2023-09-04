@@ -1,5 +1,5 @@
 <template>
-  <DatoConsultarNoticiaTituloCorto :tituloCorto="'Semana Libre'" />
+  <DatoConsultarNoticiaTituloCorto :tituloCorto="tituloCorto" />
 </template>
 
 <script>
@@ -7,6 +7,11 @@ import DatoConsultarNoticiaTituloCorto from "../components/DatoConsultarNoticiaT
 export default {
   components: {
     DatoConsultarNoticiaTituloCorto,
+  },
+  data() {
+    return {
+      tituloCorto: this.$route.params.tituloCorto,
+    };
   },
 };
 </script>
