@@ -10,31 +10,34 @@
   <RegistroPage />
   <br />
   <BuscarNoticiasEstudiantePageVue />
+  <br/>
+  <MotrarForosPage/>
+  <br/>
+  <BuscarForosEstudiantePage/>
 </template>
 
 <script>
 import BuscarNoticiasEstudiantePageVue from "./modules/estudiantes/pages/BuscarNoticiasEstudiantePage.vue";
 import RegistroPage from "./modules/estudiantes/pages/RegistroPage.vue";
 import ForoPageVue from "./modules/foros/pages/ForoPage.vue";
-import MostrarComentariosPage from "./modules/foros/pages/MostrarComentariosPage.vue";
-import PageComentario from "./modules/foros/pages/PageComentario.vue";
 import PublicarForoPage from "./modules/foros/pages/PublicarForoPage.vue";
 import MostrarNoticiasPage from "./modules/noticias/page/MostrarNoticiasPage.vue";
 import MostrarUnaNoticiaPage from "./modules/noticias/page/MostrarUnaNoticiaPage.vue";
 import PublicarNoticiaPage from "./modules/noticias/page/PublicarNoticiaPage.vue";
-
+import BuscarForosEstudiantePage from "./modules/estudiantes/pages/BuscarForosEstudiantePage.vue";
+import MotrarForosPage from "./modules/foros/pages/MotrarForosPage.vue";
 export default {
   name: "App",
   components: {
     PublicarForoPage,
     PublicarNoticiaPage,
     RegistroPage,
-    MostrarComentariosPage,
-    PageComentario,
     MostrarNoticiasPage,
     BuscarNoticiasEstudiantePageVue,
     ForoPageVue,
     MostrarUnaNoticiaPage,
+    MotrarForosPage,
+    BuscarForosEstudiantePage
   },
 };
 </script>
