@@ -1,6 +1,6 @@
 <template>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #359ee9;" >
+    <div class="container-fluid" >
       <router-link class="nav-link active" aria-current="page" to="/"><img src="../assets/UCE.png" alt="no se puede mostrar la imagen"></router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -38,6 +38,7 @@ export default {
  nav{
     margin-top: -60px;
     font-weight: bold;
+   
   }
 
   img{
@@ -45,4 +46,22 @@ export default {
     height: 75px;
   }
 
+  li:hover{
+    color: black;
+  }
+
+  .navbar-nav .nav-link:hover {
+  background-color: #33b8ec; 
+  color: black;
+  border-radius: 25%;
+}
+
+
+
+
+
+
+  
+  
+  
 </style>
