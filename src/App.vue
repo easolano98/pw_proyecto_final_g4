@@ -1,26 +1,9 @@
 <template>
   <NavBar />
   <router-view></router-view>
-  <!--
-  <br />
-  <InformacionEstudiantePageVue />
-  <br />
-  <MostrarUnaNoticiaPage />
-  <br />
-  <PublicarNoticiaPage />
-  <br />
-  <ForoPageVue />
-  <br />
-  <PublicarForoPage />
-  <br />
-  <RegistroPage />
-  <br />
-  <BuscarNoticiasEstudiantePageVue />
-  <br />
-  <MotrarForosPage />
-  <br />
-  <BuscarForosEstudiantePage />
-  -->
+  
+  
+ 
 </template>
 
 <script>
@@ -35,6 +18,7 @@ import PublicarNoticiaPage from "./modules/noticias/page/PublicarNoticiaPage.vue
 import BuscarForosEstudiantePage from "./modules/estudiantes/pages/BuscarForosEstudiantePage.vue";
 import MotrarForosPage from "./modules/foros/pages/MotrarForosPage.vue";
 import NavBar from "./components/NavBar.vue";
+import bienvenidaPage from "./modules/bienvenida/pages/BienvenidaPage.vue";
 
 export default {
   name: "App",
@@ -50,6 +34,7 @@ export default {
     BuscarForosEstudiantePage,
     InformacionEstudiantePageVue,
     NavBar,
+    bienvenidaPage
   },
 };
 </script>

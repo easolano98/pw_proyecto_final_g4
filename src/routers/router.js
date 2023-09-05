@@ -44,7 +44,14 @@ const routes = [
     {
         path: "/noticias/publicar",
         component: () => import('../modules/noticias/page/PublicarNoticiaPage')
+    },
+
+    {
+        path: "/",
+        component: () => import('../modules/bienvenida/pages/BienvenidaPage.vue')
     }
+
+
 ]
 
 const router = createRouter({
