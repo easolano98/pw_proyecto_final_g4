@@ -92,4 +92,8 @@ caption {
   margin-left: 10%;
   margin-right: 10%;
 }
+
+table{
+  font-size: 1vw;
+}
 </style>

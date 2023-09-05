@@ -1,7 +1,7 @@
 <template>
   <NavBar />
   <router-view></router-view>
-  
+  <Footer />
 </template>
 
 <script>
@@ -27,11 +27,9 @@ export default {
   margin-top: 60px;
 }
 
-
-@media screen and (max-height: 550px){
-  Footer{
+@media screen and (max-height: 550px) {
+  Footer {
     display: none;
   }
 }
-
 </style>

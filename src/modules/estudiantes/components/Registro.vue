@@ -5,7 +5,7 @@
 
       <h5>Forma parte de nuestra asociación</h5>
 
-      <div>
+      <div class="formulario">
         <div class="form-floating mb-3">
           <input
             type="text"
@@ -137,8 +137,37 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 80%;
+  margin: auto;
+  
 }
+
 .registro {
   display: grid;
 }
+
+label{
+  font-size: 1vw;
+}
+
+h5{
+  font-size: 1.5vw;
+}
+
+h1{
+  font-size: 3vw;
+  margin: auto;
+}
+input{
+
+  font-size: 1vw;
+}
+
+button{
+ 
+ 
+  font-size: 2vw;
+}
+
+
 </style>

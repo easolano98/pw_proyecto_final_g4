@@ -3,10 +3,7 @@
     <h3>Información del estudiante</h3>
 
     <div class="imagen">
-      <img
-        src="https://cdn-icons-png.flaticon.com/512/6073/6073874.png"
-        alt="Imagen por defecto"
-      />
+      <img src="https://cdn-icons-png.flaticon.com/512/6073/6073874.png" alt="Imagen por defecto" />
     </div>
 
     <div class="info-item">
@@ -20,23 +17,15 @@
     </div>
 
     <div class="info-item">
-      <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+      <label class="info-item-fecha" for="fechaNacimiento">Fecha de Nacimiento:</label>
       <div class="info-value">{{ formatDate }}</div>
     </div>
 
-    <button
-      type="button"
-      class="btn btn-outline-info"
-      @click="redirigirAForosEstudiante"
-    >
+    <button type="button" class="btn btn-outline-info" @click="redirigirAForosEstudiante">
       Foros
     </button>
 
-    <button
-      type="button"
-      class="btn btn-outline-info"
-      @click="redirigirANoticiasEstudiante"
-    >
+    <button type="button" class="btn btn-outline-info" @click="redirigirANoticiasEstudiante">
       Noticias
     </button>
   </div>
@@ -100,20 +89,46 @@ export default {
   border: 1px solid rgb(50, 48, 48);
   border-radius: 10px;
   padding: 20px;
-  width: 300px;
-  margin: 0 auto;
+  width: 30%;
+  margin: auto;
   text-align: center;
   margin-top: 20px;
 }
 
 .imagen {
   margin-bottom: 20px;
+  height: 100%;
+  width: 100%;
 }
 
 .imagen img {
   max-width: 150px;
-  height: auto;
+  height: 100%;
+  width: 100%;
   border-radius: 50%;
+}
+
+@media screen and (max-width: 800px) {
+  .imagen img {
+    height: 100%;
+    width: 100%;
+    
+  }
+
+  
+  .info-item-fecha{
+  width: 100%;
+  margin-left: -50%;
+  
+}
+
+
+}
+
+.info-item-fecha{
+  width: 100%;
+  margin-left: -6%;
+  align-items: start;
 }
 
 .info-item {
@@ -121,27 +136,32 @@ export default {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  width: 100%;
+  width: 75%;
+  
+  margin: auto;
 }
 
 label {
   font-weight: bold;
   margin-right: 10px;
+  font-size: 1vw;
 }
 
 .info-value {
   flex-grow: 1;
-  padding: 5px;
+  padding: 5%;
+  font-size: 1vw;
 }
 
 button {
-  width: 150px;
+  width: 85%;
   border-radius: 25px;
   margin-top: 25px;
+  font-size: 1vw;
 }
 
 label {
-  margin-left: 1px;
+  margin-left: auto;
 }
 
 #fecha1 {
@@ -149,11 +169,16 @@ label {
 }
 
 input {
-  margin-left: 4px;
+  margin-left: auto;
   width: 150px;
 }
-.container > div:not(:last-child) {
+
+.container>div:not(:last-child) {
   margin-bottom: 10px;
+}
+
+h3 {
+  font-size: 2vw;
 }
 </style>
   
