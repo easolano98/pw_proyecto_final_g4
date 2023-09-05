@@ -111,7 +111,7 @@ export default {
 };
 </script>
   
-  <style scoped>
+<style scoped>
 /* Puedes eliminar este estilo si ya no lo necesitas */
 
 .container {

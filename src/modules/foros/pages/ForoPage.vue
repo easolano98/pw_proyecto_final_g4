@@ -1,5 +1,9 @@
 <template>
-  <DatoConsultarForoAsunto :asunto="asunto" />
+
+  <div class="contenedor-foro-asunto-page">
+    <DatoConsultarForoAsunto :asunto="asunto" />
+  </div>
+  
   <h2>Comentarios</h2>
   <BuscarComentarios
     v-for="(comentario, index) in comentarios"
@@ -45,5 +49,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+.contenedor-foro-asunto-page{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
 </style>
