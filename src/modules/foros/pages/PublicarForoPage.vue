@@ -1,5 +1,8 @@
 <template>
-  <PublicarForo />
+  <div class="container-publicar-foro">
+    <PublicarForo />
+  </div>
+ 
 </template>
 
 <script>
@@ -11,5 +14,14 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
+.container-publicar-foro{
+  display: grid;
+  justify-content: center;
+  justify-items: center;
+  margin-top: 50px;
+  padding: 30px;
+}
+
 </style>
