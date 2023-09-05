@@ -79,7 +79,7 @@
             class="form-control descripcion"
             id="floatingInput"
             placeholder="El mundo y su naturaleza"
-            v-model="tituloLargo"
+            v-model="descripcion"
           ></textarea>
           <label for="floatingInput">Descripción</label>
         </div>
@@ -124,10 +124,12 @@
 </template>
 
 <script>
+import { consultarEstudianteFachada } from "@/modules/estudiantes/helpers/EstudianteCliente";
 import {
   guardarNoticiaFachada,
   consultarNoticiaFachada,
 } from "../helpers/NoticiaCliente";
+
 export default {
   data() {
     return {
@@ -153,15 +155,22 @@ export default {
         };
       }
     },
-    verificarCampos() {
+    async verificarCampos() {
       if (
-        this.tituloCorto.trim() == "" &&
-        this.tituloLargo.trim() == "" &&
+        this.tituloCorto.trim() == "" ||
+        this.tituloLargo.trim() == "" ||
         this.cedula.trim() == ""
       ) {
         alert("Ingrese todos los campos por favor");
         return false;
       } else {
+        try {
+          await consultarEstudianteFachada(this.cedula);
+        } catch (error) {
+          alert("Ingrese una cédula válida");
+          return false;
+        }
+
         if (this.hasText && this.descripcion.trim() == "") {
           alert("Ingrese la descripción de su noticia");
           return false;
@@ -189,7 +198,7 @@ export default {
       this.urlVideo = "";
     },
     async insertarNoticia() {
-      if (this.verificarCampos()) {
+      if (await this.verificarCampos()) {
         const data = {
           tituloCorto: this.tituloCorto,
           tituloLargo: this.tituloLargo,
@@ -205,7 +214,7 @@ export default {
               this.tituloCorto +
               "' ya existe"
           );
-        } catch {
+        } catch (error) {
           await guardarNoticiaFachada(data);
           this.limpiar();
         }
@@ -227,7 +236,7 @@ export default {
 .margen {
   margin-bottom: 15px;
 }
-.descripcion {
+textarea {
   width: 600px;
   height: 250px;
   resize: vertical;
@@ -245,5 +254,9 @@ input {
 img {
   max-width: 600px;
   max-height: 400px;
+}
+
+h1 {
+  margin-top: 20px;
 }
 </style>

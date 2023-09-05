@@ -17,7 +17,6 @@ export const consultarForosEstudianteFachada = async (cedula) => {
 }
 
 const guardarEstudiante = async (bodyEstudiante) => {
-
     axios.post(`http://localhost:8080/API/v1.0/Facultad/estudiantes`, bodyEstudiante).then(r => r.data)
 }
 

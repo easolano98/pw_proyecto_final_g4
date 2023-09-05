@@ -5,7 +5,7 @@
     </div>
 
     <div class="contenedor-foro-info">
-      <h1>{{ cedulaEstudiante }}</h1>
+      <h1>{{ nombreEstudiante }}</h1>
       <p>{{ fecha }}</p>
       <p>{{ asunto }}</p>
       <p>{{ descripcion }}</p>
@@ -14,12 +14,14 @@
 </template>
 
 <script>
+import { consultarEstudianteFachada } from "@/modules/estudiantes/helpers/EstudianteCliente";
 import { consultarForoFachada } from "../helpers/ForoCliente";
 
 export default {
   data() {
     return {
       cedulaEstudiante: null,
+      nombreEstudiante: null,
       descripcion: null,
       fecha: null,
       cedulaEstudiante: null,
@@ -29,6 +31,10 @@ export default {
   methods: {
     async buscarForo() {
       const dato = await consultarForoFachada(this.asunto);
+      const { nombre, apellido } = await consultarEstudianteFachada(
+        dato.cedulaEstudiante
+      );
+      this.nombreEstudiante = nombre + " " + apellido;
       this.cedulaEstudiante = dato.cedulaEstudiante;
       this.descripcion = dato.descripcion;
       this.fecha = dato.fecha;

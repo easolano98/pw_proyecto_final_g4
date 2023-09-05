@@ -1,16 +1,61 @@
 <template>
   <div class="contenedor">
     <div class="registro">
-      <h1>SUSCRÍBETE</h1>
-      <label for="">Cédula</label>
-      <input v-model="cedula" type="text" maxlength="10" />
-      <label for="">Nombre</label>
-      <input v-model="nombre" type="text" />
-      <label for="">Apellido</label>
-      <input v-model="apellido" type="text" />
-      <label for="">Fecha de Nacimiento</label>
-      <input v-model="fechaNacimiento" type="datetime-local" />
-      <button @click="guardarEstudiante">Suscribirse</button>
+      <h1>Suscríbete</h1>
+
+      <h5>Forma parte de nuestra asociación</h5>
+
+      <div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            maxlength="10"
+            class="form-control"
+            id="floatingInput"
+            placeholder="17XXXXXXXX"
+            v-model="cedula"
+          />
+          <label for="floatingInput">Cédula</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            placeholder="Pepito"
+            v-model="nombre"
+          />
+          <label for="floatingInput">Nombre</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="floatingInput"
+            placeholder="De los Palotes"
+            v-model="apellido"
+          />
+          <label for="floatingInput">Apellido</label>
+        </div>
+        <div class="form-floating mb-3">
+          <input
+            class="form-control"
+            id="floatingInput"
+            placeholder="El mundo y su naturaleza"
+            v-model="fechaNacimiento"
+            type="datetime-local"
+          />
+          <label for="floatingInput">Fecha de Nacimiento</label>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        @click="guardarEstudiante"
+      >
+        Suscribirse
+      </button>
     </div>
   </div>
 </template>
@@ -78,6 +123,8 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+
+  padding: 20px;
 }
 .registro {
   display: grid;

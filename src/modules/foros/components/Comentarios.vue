@@ -1,32 +1,60 @@
 <template>
-  <div>
-    <!-- Título del formulario -->
-    <h3>Envia tu comentario</h3>
+  <div class="container">
+    <div class="comentario">
+      <!-- Título del formulario -->
+      <h4>Envia tu comentario</h4>
 
-    <!-- Checkbox para mostrar/ocultar el campo de cédula -->
-    <label for="checkCedula">Hacer anónimo el comentario:</label>
-    <input type="checkbox" id="checkCedula" v-model="anonimo" />
+      <!-- Checkbox para mostrar/ocultar el campo de cédula -->
+      <div>
+        <input
+          type="checkbox"
+          class="btn-check"
+          id="btn-check-2-outlined"
+          checked
+          autocomplete="off"
+          v-model="anonimo"
+        />
+        <label class="btn btn-outline-secondary" for="btn-check-2-outlined"
+          >Anónimo</label
+        >
+      </div>
 
-    <!-- Campo de cédula, visible solo si anonimo es falso -->
-    <div v-if="!anonimo">
-      <label for="cedulaEstudiante">Cédula:</label>
-      <input
-        type="text"
-        id="cedulaEstudiante"
-        v-model="cedulaEstudiante"
-        placeholder="Ingresa tu cédula"
-      />
+      <!-- Campo de cédula, visible solo si anonimo es falso -->
+      <div v-if="!anonimo">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            maxlength="10"
+            class="form-control"
+            id="floatingInput"
+            placeholder="17XXXXXXXX"
+            v-model="cedulaEstudiante"
+          />
+          <label for="floatingInput">Cédula</label>
+        </div>
+      </div>
+
+      <div class="form-floating mb-3">
+        <textarea
+          type="text"
+          class="form-control"
+          style="height: 250px"
+          id="floatingInput"
+          placeholder="..."
+          v-model="descripcion"
+        ></textarea>
+        <label for="floatingInput">Descripción</label>
+      </div>
+
+      <!-- Botón para guardar el comentario -->
+      <button
+        type="button"
+        class="btn btn-outline-secondary"
+        @click="guardarComentario"
+      >
+        Guardar Comentario
+      </button>
     </div>
-
-    <!-- Sección de anonimato, visible si anonimo es verdadero -->
-    <div v-else>
-      <p>Anónimo</p>
-    </div>
-
-    <input type="text" id="asuntoForo" v-model="descripcion" /><br />
-
-    <!-- Botón para guardar el comentario -->
-    <button @click="guardarComentario">Guardar Comentario</button>
   </div>
 </template>
   
@@ -85,9 +113,21 @@ export default {
   
   <style scoped>
 /* Puedes eliminar este estilo si ya no lo necesitas */
-#asuntoForo {
-  height: 250px;
-  width: 250px;
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+}
+
+.comentario {
+  width: 100%;
+  padding: 15px;
+}
+
+.comentario * {
+  margin-bottom: 15px;
 }
 </style>
   
