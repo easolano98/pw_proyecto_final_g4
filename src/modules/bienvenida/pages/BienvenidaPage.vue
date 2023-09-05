@@ -1,8 +1,7 @@
 <template>
   <div class="background-container text-center">
     <div class="text-center">
-
-      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel" data-bs-interval="2000">
         <div class="carousel-indicators">
           <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
             aria-current="true" aria-label="Slide 1"></button>
@@ -12,21 +11,21 @@
             aria-label="Slide 3"></button>
         </div>
         <div class="carousel-inner">
-          <div class="carousel-item active">
+          <div class="carousel-item active" data-bs-interval="2000"> <!-- Set interval for this item -->
             <img src="@/assets/civil.png" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
               <h5 id="ti">Facultad de Ingeniería en Sistemas de la Información</h5>
               <p id="ti">Instalaciones de la Facultad</p>
             </div>
           </div>
-          <div class="carousel-item">
+          <div class="carousel-item" data-bs-interval="2000"> <!-- Set interval for this item -->
             <img src="@/assets/laboratorios.png" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
               <h5 id="ti">Laboratorios de la Facultad de Ingeniería en Sistemas de la Información</h5>
               <p id="ti">Instalaciones de los laboratorios</p>
             </div>
           </div>
-          <div class="carousel-item">
+          <div id="muro" class="carousel-item" data-bs-interval="2000"> <!-- Set interval for this item -->
             <img src="@/assets/murof.jpeg" class="d-block w-100" alt="...">
             <div class="carousel-caption d-none d-md-block">
               <h5 id="ti">Mural de la Universidad Central del Ecuador</h5>
@@ -44,7 +43,7 @@
           <span class="carousel-control-next-icon" aria-hidden="true"></span>
           <span class="visually-hidden">Next</span>
         </button>
-      </div>
+      </div><br>
 
       <!-- Texto informativo -->
       <div class="info-text">
@@ -75,12 +74,16 @@
 
 
 <script>
-export default {
 
+export default {
+ 
 }
 </script>
 
 <style scoped>
+#muro{
+  margin-top: 3.5%;
+}
 
 
 /* Cambiar el color del texto a negro */
@@ -88,10 +91,9 @@ export default {
   background: black;
   color: white;
   margin-bottom:2% ;  
-  max-width: 50%;
-  
+  max-width: 40%;
   margin: 1% auto; /* Centra horizontalmente las imágenes */
-
+  
 
 }
 h1, h2, p,li {
