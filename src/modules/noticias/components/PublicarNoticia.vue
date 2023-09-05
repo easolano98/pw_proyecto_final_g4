@@ -189,7 +189,7 @@ export default {
       this.urlVideo = "";
     },
     async insertarNoticia() {
-      if (this.verificarCampos) {
+      if (this.verificarCampos()) {
         const data = {
           tituloCorto: this.tituloCorto,
           tituloLargo: this.tituloLargo,

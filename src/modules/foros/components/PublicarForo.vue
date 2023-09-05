@@ -113,7 +113,7 @@ textarea {
 }
 
 button {
-  width: 106%;
+  width: 100%;
   padding: 10px;
   font-size: 1.2vw;
   background-color: #333;
