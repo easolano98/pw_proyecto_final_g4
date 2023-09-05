@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <ConsultarForosVue />
-    <button type="button" class="btn btn-outline-info btn-lg">
+    <button type="button" class="btn btn-outline-info btn-lg" style="margin-bottom: 25px;">
       <router-link class="op" to="/foros/publicar"
         >Crear nuevo foro</router-link
       >

@@ -6,7 +6,7 @@
       :key="index"
       :comentario="comentario"
     />
-    <Comentarios :asuntoForo="'quejas'" />
+    <Comentarios :asuntoForo="'Quejas'" />
   </div>
 </template>
 
@@ -27,7 +27,7 @@ export default {
   methods: {
     async consumirAPI() {
       try {
-        const data = await consultarComentariosForoFachada("quejas");
+        const data = await consultarComentariosForoFachada("Quejas");
         this.comentarios = data;
       } catch (error) {
         console.error("Error al cargar las noticias:", error);

@@ -40,9 +40,6 @@
                   >UCE</a
                 >
               </li>
-              <li>
-                <a href="#!" class="text-white">Link 4</a>
-              </li>
             </ul>
           </MDBCol>
           <!--Grid column-->

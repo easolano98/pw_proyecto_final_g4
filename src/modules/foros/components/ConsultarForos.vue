@@ -1,7 +1,9 @@
 <template>
   <div class="contenedor">
     <table class="table table-dark table-hover caption-top">
-      <caption>Lista de foros disponibles</caption>
+      <caption>
+        Lista de foros disponibles
+      </caption>
       <thead>
         <tr>
           <th>Asunto</th>
@@ -21,7 +23,9 @@
               {{ foro.descripcion }}
             </button>
           </td>
-          <td><input class="fecha" type="datetime-local" v-model="foro.fecha" disabled /></td>
+          <td>
+            <p>{{ fechaFormateada(foro.fecha) }}</p>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -47,10 +51,20 @@ export default {
       const ruta = `/foros/${asunto}`;
       await router.push({ path: ruta });
     },
+    fechaFormateada(fecha) {
+      const fechaISO = new Date(fecha);
+      const opciones = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      return fechaISO.toLocaleDateString("es-ES", opciones);
+    },
   },
   mounted() {
     this.buscarForos();
-  },
+  }
 };
 </script>
 
@@ -74,7 +88,7 @@ caption {
   font-size: 1.5vw;
   color: black;
 }
-.contenedor{
+.contenedor {
   margin-left: 10%;
   margin-right: 10%;
 }

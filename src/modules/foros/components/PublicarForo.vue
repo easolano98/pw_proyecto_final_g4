@@ -47,11 +47,7 @@
         <label for="floatingInput"><strong>Descripción</strong></label>
       </div>
 
-      <button
-        type="button"
-        class="btn btn-outline-secondary"
-        @click="insertarForo"
-      >
+      <button type="button" class="btn btn-outline-info" @click="insertarForo">
         Publicar Foro
       </button>
     </div>
@@ -59,6 +55,7 @@
 </template>
 
 <script>
+import router from "@/routers/router";
 import {
   guardarForoFachada,
   consultarForoFachada,
@@ -96,6 +93,10 @@ export default {
             this.cedula = null;
             this.asunto = null;
             this.descripcion = null;
+
+            alert("El foro ha sido publicado.");
+
+            this.redirigirAForo();
           } catch {
             alert(
               "No se pudo publicar el foro debido a la cedula. \nUtilice otra cedula"
@@ -115,6 +116,10 @@ export default {
       } else {
         return true;
       }
+    },
+    async redirigirAForo() {
+      const ruta = `/foros`;
+      await router.push({ path: ruta });
     },
   },
 };
@@ -171,9 +176,5 @@ textarea {
   padding: 6px;
   border: 1px solid #ccc;
   border-radius: 5px;
-}
-
-button:hover {
-  background-color: #555;
 }
 </style>

@@ -96,8 +96,12 @@ export default {
   
 
 }
-h1, h2, p,li {
+h1, h2, h3, p,li {
   color: white;
+}
+
+ul{
+  list-style: none;
 }
 
 .info-text {

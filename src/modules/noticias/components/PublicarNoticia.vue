@@ -101,7 +101,12 @@
             @change="manejoArchivoSubido"
           />
         </div>
-        <img v-if="urlImagen != ''" :src="urlImagen" alt="" />
+        <img
+          style="margin: 25px 0px"
+          v-if="urlImagen != ''"
+          :src="urlImagen"
+          alt=""
+        />
       </div>
 
       <div v-if="hasVideo">
@@ -118,8 +123,9 @@
       </div>
 
       <button
+        style="margin-bottom: 25px"
         type="button"
-        class="btn btn-outline-secondary"
+        class="btn btn-outline-info"
         @click="insertarNoticia"
       >
         Publicar Noticia
@@ -129,6 +135,7 @@
 </template>
 
 <script>
+import router from "@/routers/router";
 import { consultarEstudianteFachada } from "@/modules/estudiantes/helpers/EstudianteCliente";
 import {
   guardarNoticiaFachada,
@@ -222,8 +229,14 @@ export default {
         } catch (error) {
           await guardarNoticiaFachada(data);
           this.limpiar();
+          alert("La noticia fue publicada.");
+          await this.redirigirANoticia();
         }
       }
+    },
+    async redirigirANoticia() {
+      const ruta = `/noticias`;
+      await router.push({ path: ruta });
     },
   },
 };

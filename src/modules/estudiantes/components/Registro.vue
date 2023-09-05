@@ -54,6 +54,7 @@
       <button
         type="button"
         class="btn btn-outline-info"
+        style="margin-bottom: 25px;"
         @click="guardarEstudiante"
       >
         Suscribirse
@@ -63,6 +64,7 @@
 </template>
 
 <script>
+import router from "@/routers/router";
 import {
   guardarEstudianteFachada,
   consultarEstudianteFachada,
@@ -92,6 +94,12 @@ export default {
         } catch {
           await guardarEstudianteFachada(data);
           this.reiniciar();
+
+          alert(
+            "Te has suscrito a nuestra asociación de Sistemas de la Información."
+          );
+
+          this.redirigirABienvenida();
         }
       } else {
         alert("Asegúrese de llenar todos los campos");
@@ -114,6 +122,10 @@ export default {
       this.nombre = null;
       this.apellido = null;
       this.fechaNacimiento = null;
+    },
+    async redirigirABienvenida() {
+      const ruta = `/`;
+      await router.push({ path: ruta });
     },
   },
 };

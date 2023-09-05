@@ -27,12 +27,7 @@
             </button>
           </td>
           <td>
-            <input
-              class="fecha"
-              type="datetime-local"
-              v-model="foro.fecha"
-              disabled
-            />
+            <p>{{ fechaFormateada(foro.fecha) }}</p>
           </td>
         </tr>
       </tbody>
@@ -68,6 +63,16 @@ export default {
     async redirigirAVerForo(asunto) {
       const ruta = `/foros/${asunto}`;
       await router.push({ path: ruta });
+    },
+    fechaFormateada(fecha) {
+      const fechaISO = new Date(fecha);
+      const opciones = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      return fechaISO.toLocaleDateString("es-ES", opciones);
     },
   },
   mounted() {

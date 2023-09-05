@@ -128,7 +128,7 @@ img {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-bottom: 60px;
 }
 
 .contenedor-noticia-info {
