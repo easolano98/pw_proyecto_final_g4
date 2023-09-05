@@ -79,4 +79,10 @@ li:hover {
   color: black;
   border-radius: 25%;
 }
+
+@media screen and (max-width: 990px) {
+  .nav-link {
+    font-size: 2vw;
+  }
+}
 </style>

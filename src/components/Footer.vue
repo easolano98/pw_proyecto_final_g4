@@ -74,5 +74,30 @@ export default {
 };
 </script>
   
-  <style>
+<style scoped>
+
+@media screen and (max-width: 1000px){
+  .text-uppercase, .list-unstyled{
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 674px){
+  .p-4{
+    display: none;
+  }
+
+}
+
+@media screen and (max-width: 450px){
+  .my-4{
+    display: none;
+  }
+
+}
+
+
+
+
 </style>
