@@ -26,4 +26,12 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
+
+
+@media screen and (max-height: 550px){
+  Footer{
+    display: none;
+  }
+}
+
 </style>
