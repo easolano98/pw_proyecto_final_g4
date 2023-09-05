@@ -131,11 +131,11 @@ export default {};
 <style scoped>
 @media (max-width: 768px) {
   #ti {
-    max-width: 90%; /* Cambia el ancho máximo del título en pantallas pequeñas */
+    max-width: 90%;
   }
 
   img {
-    max-width: 80%; /* Cambia el ancho máximo de las imágenes en pantallas pequeñas */
+    max-width: 80%; 
   }
 }
 
@@ -143,13 +143,12 @@ export default {};
   margin-top: 3.5%;
 }
 
-/* Cambiar el color del texto a negro */
 #ti {
   background: black;
   color: white;
   margin-bottom: 2%;
   max-width: 40%;
-  margin: 1% auto; /* Centra horizontalmente las imágenes */
+  margin: 1% auto; 
 }
 h1,
 h2,
@@ -173,21 +172,16 @@ ul {
 img {
   max-width: 100%;
   max-height: 100%;
-  margin: 1% auto; /* Centra horizontalmente las imágenes */
+  margin: 1% auto;
 }
 
 .carousel-inner {
-  text-align: center; /* Centra el contenido del carrusel horizontalmente */
+  text-align: center;
 }
 
 .background-container {
   width: 100%;
   height: max-content;
-  /*background-image: url("@/assets/fondo.png"); /* Ruta de la imagen de fondo */
-  background-size: auto; /* Ajusta la imagen para cubrir todo el contenedor */
-  background-position: center; /* Centra la imagen de fondo */
-  background-repeat: ; /* Evita que la imagen se repita */
-  /* Otros estilos de tu contenedor */
 }
 h6 {
   font-size: 1.2vw;
