@@ -15,7 +15,7 @@
             placeholder="17XXXXXXXX"
             v-model="cedula"
           />
-          <label for="floatingInput">Cédula</label>
+          <label for="floatingInput"><strong>Cédula</strong></label>
         </div>
         <div class="form-floating mb-3">
           <input
@@ -25,7 +25,7 @@
             placeholder="Pepito"
             v-model="nombre"
           />
-          <label for="floatingInput">Nombre</label>
+          <label for="floatingInput"><strong>Nombre</strong></label>
         </div>
         <div class="form-floating mb-3">
           <input
@@ -35,7 +35,7 @@
             placeholder="De los Palotes"
             v-model="apellido"
           />
-          <label for="floatingInput">Apellido</label>
+          <label for="floatingInput"><strong>Apellido</strong></label>
         </div>
         <div class="form-floating mb-3">
           <input
@@ -45,7 +45,9 @@
             v-model="fechaNacimiento"
             type="datetime-local"
           />
-          <label for="floatingInput">Fecha de Nacimiento</label>
+          <label for="floatingInput"
+            ><strong>Fecha de Nacimiento</strong></label
+          >
         </div>
       </div>
 

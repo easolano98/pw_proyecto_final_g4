@@ -15,7 +15,7 @@
           v-model="anonimo"
         />
         <label class="btn btn-outline-secondary" for="btn-check-2-outlined"
-          >Anónimo</label
+          ><strong>Anónimo</strong></label
         >
       </div>
 
@@ -30,7 +30,7 @@
             placeholder="17XXXXXXXX"
             v-model="cedulaEstudiante"
           />
-          <label for="floatingInput">Cédula</label>
+          <label for="floatingInput"><strong>Cédula</strong></label>
         </div>
       </div>
 
@@ -43,7 +43,7 @@
           placeholder="..."
           v-model="descripcion"
         ></textarea>
-        <label for="floatingInput">Descripción</label>
+        <label for="floatingInput"><strong>Descripción</strong></label>
       </div>
 
       <!-- Botón para guardar el comentario -->
@@ -77,7 +77,6 @@ export default {
           cedulaEstudiante: this.cedulaEstudiante,
           asuntoForo: this.asuntoForo,
         };
-        console.log(this.cedulaEstudiante);
         guardarComentarioFachada(data);
 
         location.reload();
@@ -106,6 +105,11 @@ export default {
     asuntoForo: {
       type: String,
       required: true,
+    },
+  },
+  watch: {
+    anonimo() {
+      this.cedulaEstudiante = "";
     },
   },
 };

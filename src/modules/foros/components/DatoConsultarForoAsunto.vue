@@ -11,8 +11,8 @@
         <h1 class="titulo-foro">Foro</h1>
 
         <div class="fila">
-          <p class="etiqueta">Cédula Estudiante:</p>
-          <p class="valor">{{ cedulaEstudiante }}</p>
+          <p class="etiqueta">Autor:</p>
+          <p class="valor">{{ nombreEstudiante }}</p>
         </div>
 
         <div class="fila">

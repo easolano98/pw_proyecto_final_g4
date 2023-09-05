@@ -23,7 +23,7 @@
           placeholder="17XXXXXXXX"
           v-model="cedula"
         />
-        <label for="floatingInput">Cédula</label>
+        <label for="floatingInput"><strong>Cédula</strong></label>
       </div>
       <div class="form-floating mb-3">
         <input
@@ -33,7 +33,7 @@
           placeholder="El mundo y su naturaleza"
           v-model="asunto"
         />
-        <label for="floatingInput">Asunto</label>
+        <label for="floatingInput"><strong>Asunto</strong></label>
       </div>
       <div class="form-floating mb-3">
         <textarea
@@ -44,7 +44,7 @@
           placeholder="El mundo y su naturaleza"
           v-model="descripcion"
         ></textarea>
-        <label for="floatingInput">Descripción</label>
+        <label for="floatingInput"><strong>Descripción</strong></label>
       </div>
 
       <button
@@ -171,17 +171,6 @@ textarea {
   padding: 6px;
   border: 1px solid #ccc;
   border-radius: 5px;
-}
-
-button {
-  width: 100%;
-  padding: 10px;
-  font-size: 1.2vw;
-  /*background-color: #333;*/
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
 }
 
 button:hover {

@@ -13,7 +13,7 @@
             placeholder="17XXXXXXXX"
             v-model="cedula"
           />
-          <label for="floatingInput">Cédula</label>
+          <label for="floatingInput"><strong>Cédula</strong></label>
         </div>
         <div class="form-floating mb-3">
           <input
@@ -23,7 +23,7 @@
             placeholder="El mundo y su naturaleza"
             v-model="tituloCorto"
           />
-          <label for="floatingInput">Título Corto</label>
+          <label for="floatingInput"><strong>Título Corto</strong></label>
         </div>
         <div class="form-floating mb-3">
           <input
@@ -33,7 +33,7 @@
             placeholder="El mundo y su naturaleza"
             v-model="tituloLargo"
           />
-          <label for="floatingInput">Título Largo</label>
+          <label for="floatingInput"><strong>Título Largo</strong></label>
         </div>
       </div>
 
@@ -50,7 +50,7 @@
           v-model="hasText"
         />
         <label class="btn btn-outline-primary" for="btncheck1"
-          >Descripción</label
+          ><strong>Descripción</strong></label
         >
 
         <input
@@ -60,7 +60,9 @@
           autocomplete="off"
           v-model="hasImage"
         />
-        <label class="btn btn-outline-primary" for="btncheck2">Imagen</label>
+        <label class="btn btn-outline-primary" for="btncheck2"
+          ><strong>Imagen</strong></label
+        >
 
         <input
           type="checkbox"
@@ -69,7 +71,9 @@
           autocomplete="off"
           v-model="hasVideo"
         />
-        <label class="btn btn-outline-primary" for="btncheck3">Video</label>
+        <label class="btn btn-outline-primary" for="btncheck3"
+          ><strong>Video</strong></label
+        >
       </div>
 
       <div v-if="hasText">
@@ -77,11 +81,12 @@
           <textarea
             type="text"
             class="form-control descripcion"
+            style="height: 300px"
             id="floatingInput"
             placeholder="El mundo y su naturaleza"
             v-model="descripcion"
           ></textarea>
-          <label for="floatingInput">Descripción</label>
+          <label for="floatingInput"><strong>Descripción</strong></label>
         </div>
       </div>
 

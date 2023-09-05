@@ -7,8 +7,8 @@
     <div class="contenedor-noticia-info">
       <h1>{{ tituloCorto }}</h1>
       <h2>{{ tituloLargo }}</h2>
-      <p>Fecha: {{ fecha }}</p>
-      <p>Autor: {{ cedula }}</p>
+      <p><strong>Fecha: </strong> {{ fecha }}</p>
+      <p><strong>Autor: </strong>{{ nombreEstudiante }}</p>
 
       <div v-if="urlImagen">
         <label for="imagen">Imagen</label>
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import { consultarEstudianteFachada } from "@/modules/estudiantes/helpers/EstudianteCliente.js";
 import { consultarNoticiaFachada } from "../helpers/NoticiaCliente.js";
 
 export default {
@@ -38,6 +39,7 @@ export default {
       cedula: null,
       urlImagen: null,
       urlVideo: null,
+      nombreEstudiante: "",
     };
   },
 
@@ -62,6 +64,11 @@ export default {
       this.descripcion = dato.descripcion;
       this.fecha = dato.fecha;
       this.cedula = dato.cedulaEstudiante;
+
+      const { nombre, apellido } = await consultarEstudianteFachada(
+        dato.cedulaEstudiante
+      );
+      this.nombreEstudiante = nombre + " " + apellido;
 
       if (dato.urlImagen != null && dato.urlImagen != "") {
         this.urlImagen = dato.urlImagen;

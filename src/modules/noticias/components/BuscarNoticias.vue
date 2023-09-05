@@ -1,8 +1,11 @@
 <template>
   <div class="noticia">
-
     <div class="overlay" @click="redirigirAVerNoticia">
-      <img v-if="noticia.urlImagen" :src="noticia.urlImagen" :alt="'Imagen de ' + noticia.titulo" />
+      <img
+        v-if="noticia.urlImagen"
+        :src="noticia.urlImagen"
+        :alt="'Imagen de ' + noticia.titulo"
+      />
       <div class="titulo">
         <div class="titulo-largo">{{ noticia.tituloLargo }}</div>
         <div class="informacion-adicional">
@@ -45,23 +48,17 @@ export default {
 
       this.nombreAutor = autor.nombre + " " + autor.apellido;
     },
-
-    async redirigirAVerNoticia() {
-      console.log(this.noticia.tituloCorto);
-      const ruta = `/noticias/${this.noticia.tituloCorto}`;
-      await router.push({ path: ruta });
-    },
   },
   mounted() {
     this.obtenerAutor();
   },
-  computed:{
+  computed: {
     fechaFormateada() {
       const fechaISO = new Date(this.noticia.fecha);
-      const opciones = { year: 'numeric', month: '2-digit', day: '2-digit' };
-      return fechaISO.toLocaleDateString('es-ES', opciones);
+      const opciones = { year: "numeric", month: "2-digit", day: "2-digit" };
+      return fechaISO.toLocaleDateString("es-ES", opciones);
     },
-  }
+  },
 };
 </script>
 

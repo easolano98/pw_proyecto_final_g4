@@ -9,7 +9,7 @@
     <div class="contenido">
       <div class="informacion">
         <div class="nombre">
-          {{ comentario.cedulaEstudiante }}
+          {{ nombreAutor }}
         </div>
         <div class="fecha">
           {{ fechaFormateada }}
@@ -23,9 +23,27 @@
 </template>
   
   <script>
+import { consultarEstudianteFachada } from "@/modules/estudiantes/helpers/EstudianteCliente";
+
 export default {
+  data() {
+    return {
+      nombreAutor: "",
+    };
+  },
   props: {
     comentario: Object,
+  },
+  methods: {
+    async obtenerAutor() {
+      const { nombre, apellido } = await consultarEstudianteFachada(
+        this.comentario.cedulaEstudiante
+      );
+      this.nombreAutor = nombre + " " + apellido;
+    },
+  },
+  mounted() {
+    this.obtenerAutor();
   },
   computed: {
     fechaFormateada() {
