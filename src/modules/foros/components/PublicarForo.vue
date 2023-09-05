@@ -1,9 +1,16 @@
 <template>
   <div class="container">
     <div class="titulo">
-      <h1>Publica en el <br> foro Aquí</h1>
+      <h1>
+        Publica en el <br />
+        foro Aquí
+      </h1>
       <div class="image-container">
-        <img src="../store/ForoPublicarImagen.png" alt="No se pudo cargar la imagen" class="forum-image">
+        <img
+          src="../store/ForoPublicarImagen.png"
+          alt="No se pudo cargar la imagen"
+          class="forum-image"
+        />
       </div>
     </div>
     <div class="publicar">
@@ -34,6 +41,9 @@ import {
   guardarForoFachada,
   consultarForoFachada,
 } from "../helpers/ForoCliente";
+
+import { consultarEstudianteFachada } from "@/modules/estudiantes/helpers/EstudianteCliente";
+
 export default {
   data() {
     return {
@@ -51,11 +61,25 @@ export default {
       };
       try {
         await consultarForoFachada(this.asunto);
+
         alert(
           "No se pudo publicar el foro debido a que existe un foro con ese asunto. \nUtilice otro asunto"
         );
       } catch {
-        guardarForoFachada(data);
+        try {
+          await consultarEstudianteFachada(this.cedula);
+          guardarForoFachada(data);
+
+          this.cedula = null;
+          this.asunto = null;
+          this.descripcion = null;
+          
+        } catch {
+          alert(
+            "No se pudo publicar el foro debido a la cedula. \nUtilice otra cedula"
+          );
+          
+        }
       }
     },
   },
@@ -113,7 +137,7 @@ textarea {
 }
 
 button {
-  width: 106%;
+  width: 100%;
   padding: 10px;
   font-size: 1.2vw;
   background-color: #333;

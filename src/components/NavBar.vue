@@ -34,7 +34,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
  nav{
     margin-top: -60px;
     font-weight: bold;
