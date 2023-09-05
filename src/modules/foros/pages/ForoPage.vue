@@ -55,6 +55,12 @@ export default {
   align-content: center;
 }
 h2 {
-  margin: 25px;
+  margin: 2%;
+  font-size: 2vw;
+}
+@media (max-width:600px){
+  h2{
+    font-size: 4vw;
+  }
 }
 </style>

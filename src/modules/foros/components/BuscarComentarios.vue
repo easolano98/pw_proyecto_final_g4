@@ -65,7 +65,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
+  margin-bottom: 2%;
   margin-left: auto;
   margin-right: auto;
   border: 1px solid #ccc;
@@ -76,11 +76,13 @@ export default {
 }
 
 .imagen {
-  margin-right: 10px;
+  margin-right: 2%;
+  max-width: 125px;
 }
 
 .imagen img {
-  max-width: 100px;
+  width: 100%;
+  height: auto;
   border-radius: 50%;
 }
 
@@ -91,23 +93,39 @@ export default {
   flex-grow: 1;
 }
 
-.informacion {
-  font-size: 14px;
-  margin-bottom: 10px;
-}
-
 .fecha {
   font-weight: bold;
+  font-size: 1vw;
+  margin-bottom: 1%;
 }
 
 .descripcion {
-  font-size: 14px;
+  font-size: 1.1vw;
+  margin-bottom: 1%;
 }
 
 .nombre {
   text-align: center;
-  font-size: 18px;
+  font-size: 1.6vw;
   font-weight: bold;
-  margin-top: 10px;
+  margin-top: 2%;
+  margin-bottom: 1%;
+}
+
+@media (max-width: 600px) {
+  .imagen {
+    display: none;
+  }
+  .fecha {
+    font-size: 2vw;
+  }
+
+  .descripcion {
+    font-size: 2.2vw;
+  }
+
+  .nombre {
+    font-size: 3.2vw;
+  }
 }
 </style>

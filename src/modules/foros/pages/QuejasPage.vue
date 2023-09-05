@@ -42,6 +42,7 @@ export default {
 
 <style>
 h1{
-  margin: 25px 0px;
+  margin: 2% 0%;
+  font-size: 3vw;
 }
 </style>

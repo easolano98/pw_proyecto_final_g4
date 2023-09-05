@@ -16,11 +16,12 @@
         <img :src="urlImagen" alt="Imagen cargada" />
       </div>
 
+      <p class="descripcion-justificada">{{ descripcion }}</p>
+
       <div v-if="urlVideo" class="video-container">
+        <h4>Video:</h4>
         <iframe :src="embedURL" frameborder="0" allowfullscreen></iframe>
       </div>
-
-      <p>{{ descripcion }}</p>
     </div>
   </div>
 </template>
@@ -136,9 +137,11 @@ img {
   border-radius: 5px;
   margin-top: 10px;
   max-width: 500px;
-  padding: 10px;
+  padding: 20px;
   text-align: center;
   background-color: #f9f9f9;
+  width: 80%;
+  font-size: 1vw;
 }
 
 .autor:hover {
@@ -159,5 +162,15 @@ iframe {
 h1 {
   font-weight: bold;
   margin-bottom: 10px;
+  font-size: 1.8vw;
+}
+h2 {
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 1.4vw;
+}
+.descripcion-justificada {
+  text-align: justify;
+  margin-top: 15px;
 }
 </style>

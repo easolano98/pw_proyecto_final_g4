@@ -153,22 +153,22 @@ export default {
 
   .etiqueta {
     font-weight: bold;
-    margin-right: 10px; /* Espacio entre la etiqueta y el valor */
-    font-size: 10px;
+    margin-right: 10px;
+    font-size: 2.1vw;
   }
 
   .valor {
-    font-size: 10px;
+    font-size: 2.1vw;
   }
 
   .descripcion {
     text-align: left;
-    font-size: 10px;
+    font-size: 2.3vw;
   }
 
   .titulo-foro {
-    font-size: 20px;
-    margin-bottom: 10px;
+    font-size: 3.2vw;
+    margin-bottom: 5%;
   }
 }
 </style>

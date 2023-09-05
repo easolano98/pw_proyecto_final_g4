@@ -38,7 +38,7 @@
         <textarea
           type="text"
           class="form-control"
-          style="height: 250px"
+          style="height: 300px"
           id="floatingInput"
           placeholder="..."
           v-model="descripcion"
@@ -133,11 +133,58 @@ export default {
 
 .comentario {
   width: 100%;
-  padding: 15px;
+  padding: 5%;
+
+  font-size: 1vw;
+}
+
+h4 {
+  font-size: 1.8vw;
+}
+
+input,
+textarea,
+label,
+button {
+  font-size: 1vw;
 }
 
 .comentario * {
-  margin-bottom: 15px;
+  margin-bottom: 4%;
+}
+
+@media (max-width: 1000px) {
+  .comentario {
+    font-size: 1.5vw;
+  }
+
+  h4 {
+    font-size: 3vw;
+  }
+
+  input,
+  textarea,
+  label,
+  button {
+    font-size: 1.5vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .comentario {
+    font-size: 2.1vw;
+  }
+
+  h4 {
+    font-size: 3.5vw;
+  }
+
+  input,
+  textarea,
+  label,
+  button {
+    font-size: 2.1vw;
+  }
 }
 </style>
   

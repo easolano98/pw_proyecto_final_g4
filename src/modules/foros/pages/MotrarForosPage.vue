@@ -20,12 +20,14 @@ export default {
 </script>
 
 <style scoped>
-button {
-  margin-inline-start: 70%;
-}
-
 .op {
   text-decoration: none;
   color: black;
+}
+
+button{
+  margin-inline-start: 65%;
+  font-size: 1.5vw;
+  width: 15%;
 }
 </style>

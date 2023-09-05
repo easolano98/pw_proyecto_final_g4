@@ -57,8 +57,14 @@ export default {
 </script>
 
 <style scoped>
-div button {
-  margin-left: 80%;
+div.button {
   margin-bottom: 10px;
+}
+
+button {
+  width: 50%;
+  max-width: 25%;
+  margin-bottom: 20px;
+  font-size: 1.5vw;
 }
 </style>
