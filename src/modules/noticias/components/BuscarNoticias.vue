@@ -53,7 +53,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .noticia {
   display: flex;
   margin-bottom: 20px;
