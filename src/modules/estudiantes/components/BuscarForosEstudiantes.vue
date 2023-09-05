@@ -114,7 +114,7 @@ caption {
 }
 
 table{
-  font-size: 2vw;
+  font-size: 1vw;
 }
 
 </style>
