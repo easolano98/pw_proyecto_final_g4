@@ -1,5 +1,5 @@
 <template>
-  <div class="contenedor-noticia-component">
+  <div id="app" class="contenedor-noticia-component">
     <div>
       <h1>Noticia</h1>
     </div>
@@ -8,15 +8,15 @@
       <h1>{{ tituloCorto }}</h1>
       <h2>{{ tituloLargo }}</h2>
       <p><strong>Fecha: </strong> {{ fechaFormateada }}</p>
-      <p><strong>Autor: </strong>{{ nombreEstudiante }}</p>
+      <p class="autor" @click="redirigirAVerEstudiante">
+        <strong>Autor: </strong>{{ nombreEstudiante }}
+      </p>
 
       <div v-if="urlImagen">
-        <label for="imagen">Imagen</label>
         <img :src="urlImagen" alt="Imagen cargada" />
       </div>
 
       <div v-if="urlVideo" class="video-container">
-        <label for="imagen">Video</label>
         <iframe :src="embedURL" frameborder="0" allowfullscreen></iframe>
       </div>
 
@@ -26,6 +26,7 @@
 </template>
 
 <script>
+import router from "@/routers/router";
 import { consultarEstudianteFachada } from "@/modules/estudiantes/helpers/EstudianteCliente.js";
 import { consultarNoticiaFachada } from "../helpers/NoticiaCliente.js";
 
@@ -99,6 +100,10 @@ export default {
       );
       return match && match[1];
     },
+    async redirigirAVerEstudiante() {
+      const ruta = `/estudiantes/${this.cedula}`;
+      await router.push({ path: ruta });
+    },
   },
   mounted() {
     this.buscarNoticia();
@@ -114,18 +119,45 @@ export default {
 
 <style scoped>
 img {
-  width: 200px;
-  height: 150px;
+  max-width: 100%;
+  height: auto;
 }
 
 .contenedor-noticia-component {
-  display: inline-block;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
 }
+
 .contenedor-noticia-info {
-  border: 1px solid grey;
+  border: 1px solid rgb(114, 109, 226);
   border-radius: 5px;
   margin-top: 10px;
-  width: 500px;
+  max-width: 500px;
+  padding: 10px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+
+.autor:hover {
+  cursor: pointer; /* Cambia el cursor al pasar sobre el enlace del autor */
+  color: #007bff; /* Cambia el color del texto del autor */
+  text-decoration: underline; /* Subraya el enlace del autor */
+  font-weight: bold; /* Agrega negrita al texto del autor */
+}
+
+.video-container {
+  margin-top: 10px;
+}
+
+iframe {
+  max-width: 100%;
+}
+
+h1 {
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 </style>

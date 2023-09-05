@@ -49,7 +49,7 @@
       <!-- Botón para guardar el comentario -->
       <button
         type="button"
-        class="btn btn-outline-secondary"
+        class="btn btn-outline-info btn-lg"
         @click="guardarComentario"
       >
         Guardar Comentario
@@ -59,6 +59,7 @@
 </template>
   
   <script>
+import { consultarEstudianteFachada } from "@/modules/estudiantes/helpers/EstudianteCliente";
 import { guardarComentarioFachada } from "../helpers/ComentarioCliente";
 
 export default {
@@ -70,23 +71,28 @@ export default {
     };
   },
   methods: {
-    guardarComentario() {
+    async guardarComentario() {
       if (this.verificarCampos()) {
         const data = {
           descripcion: this.descripcion,
           cedulaEstudiante: this.cedulaEstudiante,
           asuntoForo: this.asuntoForo,
         };
-        guardarComentarioFachada(data);
 
-        location.reload();
+        try {
+          await consultarEstudianteFachada(this.cedulaEstudiante);
+          guardarComentarioFachada(data);
+
+          location.reload();
+        } catch (error) {
+          alert("Ingrese una cédula válida.");
+        }
       }
     },
     verificarCampos() {
       if (
-        this.descripcion.trim() == "" &&
-        !this.anonimo &&
-        this.cedulaEstudiante.trim() == ""
+        this.descripcion.trim() == "" ||
+        (!this.anonimo && this.cedulaEstudiante.trim() == "")
       ) {
         alert("Por favor, llene todos los campos.");
         return false;

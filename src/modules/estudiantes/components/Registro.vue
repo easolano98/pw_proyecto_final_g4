@@ -1,5 +1,5 @@
 <template>
-  <div class="contenedor">
+  <div id="app" class="contenedor">
     <div class="registro">
       <h1>Suscríbete</h1>
 
@@ -53,7 +53,7 @@
 
       <button
         type="button"
-        class="btn btn-outline-secondary"
+        class="btn btn-outline-info"
         @click="guardarEstudiante"
       >
         Suscribirse
@@ -125,8 +125,6 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-
-  padding: 20px;
 }
 .registro {
   display: grid;

@@ -2,29 +2,48 @@
   <div class="container">
     <h3>Información del estudiante</h3>
 
-    <div>
-      <label for="nombre">Nombre:</label>
-      <input v-model="nombre" type="text" id="nombre" disabled />
-    </div>
-
-    <div>
-      <label for="apellido">Apellido:</label>
-      <input v-model="apellido" type="text" id="apellido" disabled />
-    </div>
-
-    <div>
-      <label id="fecha1" for="fechaNacimiento">Fecha Nacimiento:</label>
-      <input
-        v-model="fechaNacimiento"
-        type="datetime-local"
-        id="fechaNacimiento"
-        disabled
+    <div class="imagen">
+      <img
+        src="https://cdn-icons-png.flaticon.com/512/6073/6073874.png"
+        alt="Imagen por defecto"
       />
     </div>
+
+    <div class="info-item">
+      <label for="nombre">Nombre:</label>
+      <div class="info-value">{{ nombre }}</div>
+    </div>
+
+    <div class="info-item">
+      <label for="apellido">Apellido:</label>
+      <div class="info-value">{{ apellido }}</div>
+    </div>
+
+    <div class="info-item">
+      <label for="fechaNacimiento">Fecha de Nacimiento:</label>
+      <div class="info-value">{{ formatDate }}</div>
+    </div>
+
+    <button
+      type="button"
+      class="btn btn-outline-info"
+      @click="redirigirAForosEstudiante"
+    >
+      Foros
+    </button>
+
+    <button
+      type="button"
+      class="btn btn-outline-info"
+      @click="redirigirANoticiasEstudiante"
+    >
+      Noticias
+    </button>
   </div>
 </template>
 
 <script>
+import router from "@/routers/router";
 import { consultarEstudianteFachada } from "../helpers/EstudianteCliente";
 
 export default {
@@ -41,6 +60,23 @@ export default {
       this.nombre = data.nombre;
       this.apellido = data.apellido;
       this.fechaNacimiento = data.fechaNacimiento;
+    },
+    async redirigirAForosEstudiante() {
+      const ruta = `/estudiantes/${this.cedula}/foros`;
+      await router.push({ path: ruta });
+    },
+    async redirigirANoticiasEstudiante() {
+      const ruta = `/estudiantes/${this.cedula}/noticias`;
+      await router.push({ path: ruta });
+    },
+  },
+  computed: {
+    formatDate() {
+      const options = { year: "numeric", month: "long", day: "numeric" };
+      return new Date(this.fechaNacimiento).toLocaleDateString(
+        "es-ES",
+        options
+      );
     },
   },
   mounted() {
@@ -61,20 +97,45 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border: 5px solid black;
-
+  border: 1px solid rgb(50, 48, 48);
+  border-radius: 10px;
   padding: 20px;
-  width: 300px; 
-  margin: 0 auto; 
+  width: 300px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 20px;
 }
 
-button:hover {
-  background-color: aqua;
+.imagen {
+  margin-bottom: 20px;
+}
+
+.imagen img {
+  max-width: 150px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+label {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.info-value {
+  flex-grow: 1;
+  padding: 5px;
 }
 
 button {
   width: 150px;
-  height: 25px;
   border-radius: 25px;
   margin-top: 25px;
 }

@@ -1,53 +1,110 @@
 <template>
-    <table border="2">
+  <div class="contenedor">
+    <table class="table table-dark table-hover caption-top">
+      <caption>
+        Foros del estudiante
+        {{
+          autor
+        }}
+      </caption>
+      <thead>
         <tr>
-            <th>Asunto</th>
-            <th>Descripcion</th>
-            <th>Fecha</th>
-
+          <th>Asunto</th>
+          <th>Descripción</th>
+          <th>Fecha</th>
         </tr>
-
+      </thead>
+      <tbody>
         <tr v-for="foro in foros" :key="foro.id">
-            <td><button>{{ foro.asunto }}</button></td>
-            <td><button>{{ foro.descripcion }}</button></td>
-            <td><input type="datetime-local" v-model="foro.fecha" disabled></td>
+          <td>
+            <button @click="redirigirAVerForo(foro.asunto)">
+              {{ foro.asunto }}
+            </button>
+          </td>
+          <td>
+            <button @click="redirigirAVerForo(foro.asunto)">
+              {{ foro.descripcion }}
+            </button>
+          </td>
+          <td>
+            <input
+              class="fecha"
+              type="datetime-local"
+              v-model="foro.fecha"
+              disabled
+            />
+          </td>
         </tr>
-        <tbody></tbody>
+      </tbody>
     </table>
+  </div>
 </template>
   
-<script>
-
-import { consultarForosEstudianteFachada } from "../helpers/EstudianteCliente"
+  <script>
+import router from "@/routers/router";
+import {
+  consultarForosEstudianteFachada,
+  consultarEstudianteFachada,
+} from "../helpers/EstudianteCliente";
 
 export default {
-    data() {
-        return {
-            foros: [],
-           
-        }
+  data() {
+    return {
+      foros: [],
+      autor: "",
+    };
+  },
+  methods: {
+    async buscarForos() {
+      var foros = await consultarForosEstudianteFachada(this.cedula);
+      this.foros = foros;
     },
-    props: {
-        cedula: {
-            type: String,
-            required: true,
-        },
+    async buscarAutor() {
+      const { nombre, apellido } = await consultarEstudianteFachada(
+        this.cedula
+      );
+      this.autor = nombre + " " + apellido;
     },
-    methods: {
-        async buscarForosEstudiantes() {
-            var cedula=this.cedula
-            var foros = await consultarForosEstudianteFachada(cedula);
-            this.foros = foros;
-        }
+    async redirigirAVerForo(asunto) {
+      const ruta = `/foros/${asunto}`;
+      await router.push({ path: ruta });
     },
-    mounted() {
-        this.buscarForosEstudiantes();
-    }
-}
+  },
+  mounted() {
+    this.buscarForos();
+    this.buscarAutor();
+  },
+  props: {
+    cedula: {
+      type: String,
+      required: true,
+    },
+  },
+};
 </script>
   
-<style scoped>
+  <style scoped>
 button {
-    border: none;
+  border: none;
+  outline: none;
+  background: none;
+  color: white;
+}
+
+.fecha {
+  background: none;
+  outline: none;
+  border: none;
+  color: white;
+}
+
+caption {
+  font-weight: bold;
+  font-size: 1.5vw;
+  color: black;
+}
+.contenedor {
+  margin-left: 10%;
+  margin-right: 10%;
 }
 </style>

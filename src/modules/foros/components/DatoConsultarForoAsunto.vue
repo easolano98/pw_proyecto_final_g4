@@ -1,5 +1,5 @@
 <template>
-  <div class="contenedor-foro-component">
+  <div id="app" class="contenedor-foro-component">
     <div class="contenido">
       <img
         src="../store/usuarioForoAsunto.png"
@@ -12,7 +12,9 @@
 
         <div class="fila">
           <p class="etiqueta">Autor:</p>
-          <p class="valor">{{ nombreEstudiante }}</p>
+          <p class="valor autor" @click="redirigirAVerEstudiante">
+            {{ nombreEstudiante }}
+          </p>
         </div>
 
         <div class="fila">
@@ -34,6 +36,7 @@
 </template>
 
 <script>
+import router from "@/routers/router";
 import { consultarEstudianteFachada } from "@/modules/estudiantes/helpers/EstudianteCliente";
 import { consultarForoFachada } from "../helpers/ForoCliente";
 
@@ -58,6 +61,10 @@ export default {
       this.descripcion = dato.descripcion;
       this.fecha = dato.fecha;
     },
+    async redirigirAVerEstudiante() {
+      const ruta = `/estudiantes/${this.cedulaEstudiante}`;
+      await router.push({ path: ruta });
+    },
   },
   props: {
     asunto: {
@@ -80,7 +87,6 @@ export default {
       return fechaISO.toLocaleDateString("es-ES", opciones);
     },
   },
-  
 };
 </script>
 
@@ -131,6 +137,13 @@ export default {
 .descripcion {
   text-align: left;
   font-size: 1vw;
+}
+
+.autor:hover {
+  cursor: pointer;
+  color: #359ee9;
+  text-decoration: underline;
+  text-decoration-color: #359ee9;
 }
 
 @media (max-width: 600px) {

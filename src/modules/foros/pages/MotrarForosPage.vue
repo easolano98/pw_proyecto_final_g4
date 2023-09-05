@@ -1,30 +1,31 @@
 <template>
-  <ConsultarForosVue/>
-  <button type="button" class="btn btn-outline-info"><router-link class="op" to="/foros/publicar">Crear nuevo foro</router-link></button>
-  
+  <div id="app">
+    <ConsultarForosVue />
+    <button type="button" class="btn btn-outline-info btn-lg">
+      <router-link class="op" to="/foros/publicar"
+        >Crear nuevo foro</router-link
+      >
+    </button>
+  </div>
 </template>
 
 <script>
-import ConsultarForosVue from '../components/ConsultarForos.vue'
-
+import ConsultarForosVue from "../components/ConsultarForos.vue";
 
 export default {
-    components:{
-      ConsultarForosVue
-    }
-
-}
+  components: {
+    ConsultarForosVue,
+  },
+};
 </script>
 
 <style scoped>
-button{
+button {
   margin-inline-start: 70%;
-  background:#72DDF7;
 }
 
-.op{
+.op {
   text-decoration: none;
   color: black;
 }
-
 </style>

@@ -30,7 +30,6 @@ export default {
   },
   methods: {
     async redirigirAVerNoticia() {
-      console.log(this.noticia.tituloCorto);
       const ruta = `/noticias/${this.noticia.tituloCorto}`;
       await router.push({ path: ruta });
     },
@@ -46,7 +45,6 @@ export default {
       const autor = await fetch(urlAutor).then((r) => r.json());
       
       this.nombreAutor = autor.nombre + " " + autor.apellido;
-      console.log(this.nombreAutor)
     },
   },
   mounted() {

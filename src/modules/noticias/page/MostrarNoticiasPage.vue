@@ -4,7 +4,7 @@
     <div class="contenedor-noticias">
       <button
         type="button"
-        class="btn btn-secondary btn-lg"
+        class="btn btn-outline-info btn-lg"
         @click="redirigirAPublicarNoticia"
       >
         Publicar una noticia

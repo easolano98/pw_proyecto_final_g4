@@ -5,7 +5,7 @@
       <thead>
         <tr>
           <th>Asunto</th>
-          <th>Descripcion</th>
+          <th>Descripción</th>
           <th>Fecha</th>
         </tr>
       </thead>

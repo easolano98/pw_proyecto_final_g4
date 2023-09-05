@@ -25,7 +25,7 @@
               class="nav-link active"
               aria-current="page"
               to="/estudiantes/registro"
-              >Suscripcion</router-link
+              >Suscripción</router-link
             >
           </li>
           <li class="nav-item">

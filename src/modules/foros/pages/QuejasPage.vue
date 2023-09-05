@@ -1,11 +1,13 @@
 <template>
-  <h1>Quejas</h1>
-  <BuscarComentarios
-    v-for="(comentario, index) in comentarios"
-    :key="index"
-    :comentario="comentario"
-  />
-  <Comentarios :asuntoForo="'quejas'" />
+  <div id="app">
+    <h1>Quejas</h1>
+    <BuscarComentarios
+      v-for="(comentario, index) in comentarios"
+      :key="index"
+      :comentario="comentario"
+    />
+    <Comentarios :asuntoForo="'quejas'" />
+  </div>
 </template>
 
 <script>
@@ -39,4 +41,7 @@ export default {
 </script>
 
 <style>
+h1{
+  margin: 25px 0px;
+}
 </style>
