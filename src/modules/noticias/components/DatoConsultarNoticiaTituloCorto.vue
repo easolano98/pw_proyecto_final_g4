@@ -7,7 +7,7 @@
     <div class="contenedor-noticia-info">
       <h1>{{ tituloCorto }}</h1>
       <h2>{{ tituloLargo }}</h2>
-      <p><strong>Fecha: </strong> {{ fecha }}</p>
+      <p><strong>Fecha: </strong> {{ fechaFormateada }}</p>
       <p><strong>Autor: </strong>{{ nombreEstudiante }}</p>
 
       <div v-if="urlImagen">
@@ -53,6 +53,17 @@ export default {
       } else {
         return "";
       }
+    },
+
+    fechaFormateada() {
+      const fechaISO = new Date(this.fecha);
+      const opciones = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      return fechaISO.toLocaleDateString("es-ES", opciones);
     },
   },
 

@@ -1,11 +1,9 @@
 <template>
   <div class="noticia">
     <div class="overlay" @click="redirigirAVerNoticia">
-      <img
-        v-if="noticia.urlImagen"
-        :src="noticia.urlImagen"
-        :alt="'Imagen de ' + noticia.titulo"
-      />
+
+      <img v-if="noticia.urlImagen" :src="noticia.urlImagen" :alt="'Imagen de ' + noticia.titulo" />
+      <img v-else src="../store/noticias.jpg" :alt="'Imagen de ' + noticia.titulo" />
       <div class="titulo">
         <div class="titulo-largo">{{ noticia.tituloLargo }}</div>
         <div class="informacion-adicional">
@@ -24,6 +22,7 @@ export default {
     return {
       nombreAutor: "",
       hover: false,
+      
     };
   },
   props: {
@@ -45,8 +44,9 @@ export default {
       }
 
       const autor = await fetch(urlAutor).then((r) => r.json());
-
+      
       this.nombreAutor = autor.nombre + " " + autor.apellido;
+      console.log(this.nombreAutor)
     },
   },
   mounted() {
@@ -65,11 +65,13 @@ export default {
 <style scoped>
 .noticia {
   display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 20px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  overflow: hidden;
+ 
+  overflow: visible;
   position: relative;
+  
 }
 
 .overlay {
@@ -77,6 +79,10 @@ export default {
   flex-grow: 1;
   max-width: 35%;
   transition: transform 0.3s;
+  box-shadow: 5px 5px 5px 5px;
+  margin-bottom: 2%;
+  border: 1px solid black;
+  border-radius: 5px;
 }
 
 .overlay:hover {
@@ -97,10 +103,10 @@ export default {
   color: #fff;
   padding: 10px;
   text-align: center;
-  font-size: 30px;
+  font-size: 1.5vw;
   font-weight: bold;
   transition: opacity 0.3s;
-  opacity: 0;
+  opacity: 0.75;
 }
 
 .overlay:hover .titulo {
@@ -108,9 +114,10 @@ export default {
 }
 
 .informacion-adicional {
+  padding: 1%;
   display: none;
   text-align: center;
-  font-size: 14px;
+  font-size: 1vw;
 }
 
 .overlay:hover .informacion-adicional {

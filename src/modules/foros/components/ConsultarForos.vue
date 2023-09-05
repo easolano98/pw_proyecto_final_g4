@@ -1,26 +1,31 @@
 <template>
-  <table border="2">
-    <tr>
-      <th>Asunto</th>
-      <th>Descripcion</th>
-      <th>Fecha</th>
-    </tr>
-
-    <tr v-for="foro in foros" :key="foro.id">
-      <td>
-        <button @click="redirigirAVerForo(foro.asunto)">
-          {{ foro.asunto }}
-        </button>
-      </td>
-      <td>
-        <button @click="redirigirAVerForo(foro.asunto)">
-          {{ foro.descripcion }}
-        </button>
-      </td>
-      <td><input type="datetime-local" v-model="foro.fecha" disabled /></td>
-    </tr>
-    <tbody></tbody>
-  </table>
+  <div class="contenedor">
+    <table class="table table-dark table-hover caption-top">
+      <caption>Lista de foros disponibles</caption>
+      <thead>
+        <tr>
+          <th>Asunto</th>
+          <th>Descripcion</th>
+          <th>Fecha</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="foro in foros" :key="foro.id">
+          <td>
+            <button @click="redirigirAVerForo(foro.asunto)">
+              {{ foro.asunto }}
+            </button>
+          </td>
+          <td>
+            <button @click="redirigirAVerForo(foro.asunto)">
+              {{ foro.descripcion }}
+            </button>
+          </td>
+          <td><input class="fecha" type="datetime-local" v-model="foro.fecha" disabled /></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </template>
 
 <script>
@@ -52,5 +57,25 @@ export default {
 <style scoped>
 button {
   border: none;
+  outline: none;
+  background: none;
+  color: white;
+}
+
+.fecha {
+  background: none;
+  outline: none;
+  border: none;
+  color: white;
+}
+
+caption {
+  font-weight: bold;
+  font-size: 1.5vw;
+  color: black;
+}
+.contenedor{
+  margin-left: 10%;
+  margin-right: 10%;
 }
 </style>

@@ -22,7 +22,7 @@
 
         <div class="fila">
           <p class="etiqueta">Fecha:</p>
-          <p class="valor">{{ fecha }}</p>
+          <p class="valor">{{ fechaFormateada }}</p>
         </div>
 
         <div class="descripcion">
@@ -68,6 +68,19 @@ export default {
   mounted() {
     this.buscarForo();
   },
+  computed: {
+    fechaFormateada() {
+      const fechaISO = new Date(this.fecha);
+      const opciones = {
+        weekday: "long",
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      };
+      return fechaISO.toLocaleDateString("es-ES", opciones);
+    },
+  },
+  
 };
 </script>
 
