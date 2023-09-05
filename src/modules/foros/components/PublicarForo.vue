@@ -133,15 +133,14 @@ export default {
 }
 
 .titulo {
-  margin-right: 50px;
-  margin-left: 50px;
+  margin: 0% 4%;
   text-align: center;
   font-size: 2vw;
 }
 
 .image-container {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 6%;
 }
 
 .forum-image {
@@ -170,11 +169,50 @@ textarea {
   border: 1px solid #ccc;
   border-radius: 5px;
 }*/
+
+input,
+textarea,
+label,
+button {
+  font-size: 1.1vw;
+}
 .descripcion {
   width: 100%;
   resize: vertical;
   padding: 6px;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+@media (max-width: 1000px) {
+  .titulo {
+    display: none;
+  }
+  .publicar {
+    padding: 25px;
+    width: 100%;
+    font-size: 1.5vw;
+  }
+
+  input,
+  textarea,
+  label,
+  button {
+    font-size: 1.5vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .publicar {
+    
+    font-size: 2.1vw;
+  }
+
+  input,
+  textarea,
+  label,
+  button {
+    font-size: 2.1vw;
+  }
 }
 </style>

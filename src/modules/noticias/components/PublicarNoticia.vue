@@ -8,7 +8,7 @@
           <input
             type="text"
             maxlength="10"
-            class="form-control"
+            class="form-control formulario"
             id="floatingInput"
             placeholder="17XXXXXXXX"
             v-model="cedula"
@@ -18,7 +18,7 @@
         <div class="form-floating mb-3">
           <input
             type="text"
-            class="form-control"
+            class="form-control formulario"
             id="floatingInput"
             placeholder="El mundo y su naturaleza"
             v-model="tituloCorto"
@@ -28,7 +28,7 @@
         <div class="form-floating mb-3">
           <input
             type="text"
-            class="form-control"
+            class="form-control formulario"
             id="floatingInput"
             placeholder="El mundo y su naturaleza"
             v-model="tituloLargo"
@@ -76,7 +76,7 @@
         >
       </div>
 
-      <div v-if="hasText">
+      <div v-if="hasText" class="publicar">
         <div class="form-floating mb-3">
           <textarea
             type="text"
@@ -90,7 +90,7 @@
         </div>
       </div>
 
-      <div v-if="hasImage">
+      <div v-if="hasImage" class="publicar">
         <div class="input-group mb-3">
           <input
             type="file"
@@ -109,7 +109,7 @@
         />
       </div>
 
-      <div v-if="hasVideo">
+      <div v-if="hasVideo" class="publicar">
         <div class="form-floating mb-3">
           <input
             type="url"
@@ -247,15 +247,20 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 50%;
 }
+
 .publicar {
   display: grid;
+  width: 100%;
 }
+
 .margen {
   margin-bottom: 15px;
 }
+
 textarea {
-  width: 600px;
+  width: 100%;
   height: 250px;
   resize: vertical;
   font-family: Arial, sans-serif;
@@ -266,15 +271,59 @@ textarea {
 }
 
 input {
-  width: 600px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 img {
-  max-width: 600px;
-  max-height: 400px;
+  width: 100%;
+  height: auto;
 }
 
 h1 {
   margin-top: 20px;
+}
+
+input,
+textarea,
+label,
+button {
+  font-size: 1vw;
+}
+
+@media (max-width: 1000px) {
+  .comentario {
+    font-size: 1.5vw;
+  }
+
+  h4 {
+    font-size: 3vw;
+  }
+
+  input,
+  textarea,
+  label,
+  button {
+    font-size: 1.5vw;
+  }
+}
+
+@media (max-width: 600px) {
+  .publicar {
+    font-size: 2.1vw;
+  }
+
+  h4 {
+    font-size: 3.5vw;
+  }
+
+  input,
+  textarea,
+  label,
+  button {
+    font-size: 2.1vw;
+  }
 }
 </style>

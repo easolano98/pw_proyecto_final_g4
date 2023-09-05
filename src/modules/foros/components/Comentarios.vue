@@ -122,8 +122,6 @@ export default {
 </script>
   
 <style scoped>
-/* Puedes eliminar este estilo si ya no lo necesitas */
-
 .container {
   display: flex;
   justify-content: center;

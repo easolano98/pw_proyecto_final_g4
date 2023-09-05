@@ -13,6 +13,7 @@ export default {};
 <style scoped>
 .error {
   margin-top: 3%;
+  text-align: center; /* Centra el contenido */
 }
 
 h1 {
@@ -26,7 +27,18 @@ h2 {
 }
 
 img {
-  height: 20%;
-  width: 20%;
+  max-width: 100%; /* Hace que la imagen sea adaptable al ancho del contenedor */
+  height: auto; /* Mantiene la proporción de la imagen */
+}
+/* Media query para ajustar el tamaño del texto en pantallas más pequeñas */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 8vw;
+  }
+
+  h2 {
+    font-size: 4vw;
+  }
 }
 </style>
+
