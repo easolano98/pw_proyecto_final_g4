@@ -49,6 +49,10 @@ const routes = [
     {
         path: "/",
         component: () => import('../modules/bienvenida/pages/BienvenidaPage.vue')
+    },
+    {
+        path: "/:pathMatch(.*)*",
+        component: () => import('../modules/bienvenida/pages/NotFoundPage.vue')
     }
 
 

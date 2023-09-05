@@ -1,7 +1,6 @@
 <template>
   <div class="background-container text-center">
     <div class="text-center">
-      <h1>BIENVENIDO</h1>
 
       <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
         <div class="carousel-indicators">
